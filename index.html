@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="tr" data-lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LP Group — HubSpot Pilot İtalya / Italia · v4</title>
+<style>
+:root{
+  --bg:#F5F5F7; --surface:#FFFFFF; --surface2:#F2F2F7; --ink:#1D1D1F; --muted:#6E6E73; --line:#D2D2D7; --line2:#E8E8ED; --inv:#FFFFFF;
+  --blue:#007AFF; --green:#34C759; --orange:#FF9500; --purple:#AF52DE; --indigo:#5856D6; --teal:#30B0C7; --pink:#FF2D55; --red:#FF3B30; --gray:#8E8E93;
+  --go:var(--blue); --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px -12px rgba(0,0,0,.12);
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --p0:var(--gray);--p1:var(--blue);--p2:var(--indigo);--p3:var(--green);--p4:var(--orange);--p5:var(--teal);
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --bg:#000000; --surface:#1C1C1E; --surface2:#2C2C2E; --ink:#F5F5F7; --muted:#98989D; --line:#3A3A3C; --line2:#2C2C2E; --inv:#000000;
+  --blue:#0A84FF; --green:#30D158; --orange:#FF9F0A; --purple:#BF5AF2; --indigo:#5E5CE6; --teal:#40C8E0; --pink:#FF375F; --red:#FF453A; --gray:#8E8E93;
+  --shadow:0 0 0 1px rgba(255,255,255,.06); color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#000000; --surface:#1C1C1E; --surface2:#2C2C2E; --ink:#F5F5F7; --muted:#98989D; --line:#3A3A3C; --line2:#2C2C2E; --inv:#000000;
+  --blue:#0A84FF; --green:#30D158; --orange:#FF9F0A; --purple:#BF5AF2; --indigo:#5E5CE6; --teal:#40C8E0; --pink:#FF375F; --red:#FF453A; --gray:#8E8E93;
+  --shadow:0 0 0 1px rgba(255,255,255,.06); color-scheme:dark;}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);-webkit-font-smoothing:antialiased;letter-spacing:-.005em;transition:background .3s,color .3s}
+[data-lang="tr"] .it,[data-lang="it"] .tr{display:none!important}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+button{font-family:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--blue) 55%,transparent);outline-offset:2px}
+.tint{background:color-mix(in srgb,var(--c) 12%,var(--surface))}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line2)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:52px}
+.brand{font:600 15px var(--display);white-space:nowrap;display:flex;align-items:center;gap:8px}
+.brand::before{content:"";width:10px;height:10px;border-radius:50%;background:conic-gradient(var(--blue),var(--purple),var(--pink),var(--orange),var(--green),var(--teal),var(--blue))}
+.brand span{color:var(--muted);font:500 12.5px var(--body)}
+.links{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none}
+.links a{color:var(--muted);text-decoration:none;font-size:13.5px;padding:6px 10px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
+.links a:hover{color:var(--ink);background:var(--surface2)}
+.toggle,.seg{display:flex;background:var(--surface2);border-radius:999px;padding:3px;flex:none}
+.toggle button,.seg button{font:600 13px var(--body);background:none;border:0;color:var(--muted);padding:6px 14px;cursor:pointer;border-radius:999px;transition:all .2s}
+.toggle button[aria-pressed="true"],.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.theme{flex:none;width:34px;height:34px;border-radius:50%;border:0;background:var(--surface2);color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.theme svg{width:17px;height:17px}
+.theme .moon{display:none}
+:root[data-theme="dark"] .theme .sun{display:none}
+:root[data-theme="dark"] .theme .moon{display:block}
+
+/* hero */
+.hero{padding:64px 0 8px;display:grid;grid-template-columns:1.3fr .9fr;gap:48px;align-items:end}
+.ver{display:inline-block;font-size:13px;font-weight:600;margin-bottom:14px;background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+h1{font:700 clamp(40px,6vw,74px)/1.02 var(--display);letter-spacing:-.035em;margin:0}
+.lede{font-size:19px;color:var(--muted);max-width:56ch;margin:22px 0 0;line-height:1.5}
+.ask{background:linear-gradient(145deg,var(--blue),var(--indigo) 60%,var(--purple));color:#fff;border-radius:24px;padding:26px 28px;box-shadow:0 20px 40px -20px color-mix(in srgb,var(--indigo) 70%,transparent)}
+.ask h2{font:600 13px var(--body);margin:0 0 12px;opacity:.8;text-transform:none}
+.ask ol{margin:0;padding-left:20px}
+.ask li{margin:0 0 10px;font-size:15.5px}
+.ask li:last-child{margin:0}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.facts div{background:var(--surface);border-radius:20px;padding:20px 22px;box-shadow:var(--shadow);border-top:3px solid var(--c)}
+.facts div:nth-child(1){--c:var(--green)} .facts div:nth-child(2){--c:var(--blue)} .facts div:nth-child(3){--c:var(--purple)}
+.facts b{display:block;font:700 28px/1.15 var(--display);letter-spacing:-.02em;color:var(--c)}
+.facts span{font-size:14px;color:var(--muted)}
+
+section{padding:72px 0 8px}
+.sech{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+h2.sec{font:700 40px/1.05 var(--display);letter-spacing:-.03em;margin:0}
+.sub{color:var(--muted);margin:8px 0 0;max-width:72ch;font-size:17px}
+
+/* timeline */
+.tl{background:var(--surface);border-radius:22px;padding:20px 22px;margin-bottom:16px;overflow-x:auto;box-shadow:var(--shadow)}
+.tl-in{min-width:760px}
+.tl-cap{font-size:13px;color:var(--muted);margin-bottom:10px}
+.months{display:grid;grid-template-columns:repeat(12,1fr);gap:4px}
+.m{font-size:12px;text-align:center;color:var(--muted);padding:6px 0;border-radius:8px;background:var(--surface2)}
+.bands{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-top:6px}
+.band{border-radius:12px;padding:9px 12px;font:600 14px var(--display);color:#fff}
+.b1{grid-column:1/5;background:var(--blue)} .b2{grid-column:5/11;background:var(--indigo)} .b3{grid-column:11/13;background:var(--green)}
+.band small{display:block;font:400 12px var(--body);opacity:.9}
+
+/* map */
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:0 0 12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:0}
+.mapbox{background:var(--surface);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.mapscroll{overflow-x:auto}
+.map{position:relative;min-width:1140px;padding:24px 30px 20px 22px}
+.cols{display:grid;grid-template-columns:repeat(6,1fr);gap:28px;position:relative;z-index:2}
+.colhead{padding-bottom:10px;margin-bottom:14px;min-height:56px;border-bottom:2px solid var(--c)}
+.colhead b{display:flex;align-items:center;gap:7px;font:600 16px var(--display)}
+.colhead b::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.colhead span{font-size:12.5px;color:var(--muted)}
+.node{position:relative;display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line2);border-radius:14px;
+  padding:11px 30px 11px 13px;margin-bottom:12px;transition:transform .2s,box-shadow .2s,opacity .25s,border-color .2s}
+.node::after{content:"+";position:absolute;top:9px;right:9px;width:18px;height:18px;border-radius:50%;
+  font:600 13px/18px var(--body);text-align:center;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent)}
+.node.sel::after{content:"–";background:var(--c);color:#fff}
+.node b{display:block;font:600 14px/1.25 var(--body)}
+.node small{display:block;font-size:12.5px;line-height:1.35;color:var(--muted);margin-top:3px}
+.node.plan{background:color-mix(in srgb,var(--c) 7%,var(--surface));border-color:color-mix(in srgb,var(--c) 28%,transparent)}
+.node.done{--c:var(--green);background:color-mix(in srgb,var(--green) 12%,var(--surface));border-color:color-mix(in srgb,var(--green) 40%,transparent)}
+.node.done::after{content:"✓"}
+.node.problem{--c:var(--orange);background:color-mix(in srgb,var(--orange) 12%,var(--surface));border-color:color-mix(in srgb,var(--orange) 40%,transparent)}
+.node.future,.node:not(.plan):not(.done):not(.problem){border-style:dashed;border-color:color-mix(in srgb,var(--c) 45%,transparent)}
+.node:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(0,0,0,.35)}
+.node.sel{box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 45%,transparent)}
+.map.focus .cols .node:not(.sel):not(.near){opacity:.3}
+svg.edges{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+svg.edges path{fill:none;stroke:var(--line);stroke-width:1.5}
+svg.edges path.hot{stroke:var(--blue);stroke-width:2.4}
+.owner{position:relative;z-index:2;margin-top:8px;padding-top:16px;border-top:1px solid var(--line2)}
+.owner .node{border:0;background:linear-gradient(120deg,var(--indigo),var(--purple) 55%,var(--pink));color:#fff;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:16px 18px;margin:0;border-radius:18px}
+.owner .node::after{display:none}
+.owner .node small{color:#fff;opacity:.82}
+.owner .open{flex:none;display:flex;align-items:center;gap:8px;font:600 13px var(--body);background:#fff;color:var(--indigo);border-radius:999px;padding:8px 15px}
+.owner .open::before{content:"+";font-size:15px;line-height:1}
+.owner .node.sel .open::before{content:"–"}
+.owner .node.sel{box-shadow:0 0 0 3px color-mix(in srgb,var(--purple) 40%,transparent)}
+.owner .badge{display:inline-block;font:600 11.5px var(--body);background:rgba(255,255,255,.22);border-radius:999px;padding:2px 9px;margin-left:10px;vertical-align:1px}
+.detail{border-top:1px solid var(--line2);padding:24px 28px;display:grid;grid-template-columns:1fr 1.7fr;gap:32px;min-height:170px}
+.detail .k{font-size:13px;font-weight:600;color:var(--c,var(--blue))}
+.detail h3{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:4px 0 6px}
+.detail p{margin:0 0 10px;color:var(--muted)}
+.detail dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:10px 16px;font-size:15px}
+.detail dt{color:var(--muted)} .detail dd{margin:0}
+.effort{margin-top:10px;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--purple) 12%,var(--surface));color:var(--ink);font-size:14px}
+.chips button{font:500 13px var(--body);border:0;background:var(--surface2);color:var(--ink);border-radius:999px;padding:5px 12px;margin:0 6px 6px 0;cursor:pointer}
+.chips button:hover{background:color-mix(in srgb,var(--blue) 15%,var(--surface2))}
+.hint{color:var(--muted);font-size:14px;margin:0}
+
+/* features */
+.fchips{display:flex;flex-wrap:wrap;gap:8px}
+.fchip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;box-shadow:var(--shadow)}
+.fchip i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.fchip span{color:var(--muted);font-weight:400}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:18px;border:0;cursor:pointer;font:600 15px var(--body);color:#fff;background:var(--blue);padding:12px 22px;border-radius:999px;box-shadow:0 10px 24px -12px color-mix(in srgb,var(--blue) 80%,transparent);transition:transform .2s}
+.cta:hover{transform:translateY(-1px)}
+.cta svg{width:16px;height:16px;transition:transform .3s}
+.cta[aria-expanded="true"]{background:var(--surface2);color:var(--ink);box-shadow:none}
+.cta[aria-expanded="true"] svg{transform:rotate(180deg)}
+.fwrap{margin-top:22px;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+.count{font-size:14px;color:var(--muted);display:flex;align-items:center;flex-wrap:wrap}
+.count b{color:var(--ink)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.fcat{background:var(--surface);border-radius:20px;padding:18px 20px 10px;box-shadow:var(--shadow);border-top:3px solid var(--c)}
+.fcat h3{font:600 17px var(--display);margin:0 0 2px;display:flex;justify-content:space-between;gap:10px}
+.fcat h3 span{font:600 12px var(--body);color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border-radius:999px;padding:2px 9px;height:fit-content;white-space:nowrap}
+.fcat ul{list-style:none;margin:8px 0 0;padding:0}
+.fcat li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line2);font-size:14.5px;line-height:1.4}
+.fcat li:first-child{border-top:0}
+.dot{flex:none;width:8px;height:8px;border-radius:50%;margin-top:6px;border:1.5px solid var(--gray)}
+.bolt{flex:none;width:14px;height:14px;margin-top:3px;color:var(--c,var(--blue))}
+.auto span{font-weight:500}
+.flegend{display:flex;gap:14px;font-size:13px;color:var(--muted);align-items:center}
+.flegend span{display:inline-flex;gap:6px;align-items:center}
+.only-auto li:not(.auto){display:none}
+.only-auto .fcat.empty{display:none}
+.fnote{font-size:13.5px;color:var(--muted);margin-top:14px;max-width:90ch}
+
+/* ROI */
+.roi{background:var(--surface);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.roi-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 20px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 20px 20px}
+.kpi{padding:18px 18px;border-radius:18px;background:color-mix(in srgb,var(--c) 10%,var(--surface))}
+.kpi:nth-child(1){--c:var(--blue)} .kpi:nth-child(2){--c:var(--purple)} .kpi:nth-child(3){--c:var(--green)} .kpi:nth-child(4){--c:var(--orange)}
+.kpi b{display:block;font:700 36px/1.05 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--c)}
+.kpi span{font-size:13.5px;color:var(--muted)}
+.roi-body{display:grid;grid-template-columns:1fr 1.35fr;border-top:1px solid var(--line2)}
+.roi-body.solo{grid-template-columns:1fr}
+.roi-col{padding:20px 22px}
+.roi-col+.roi-col{border-left:1px solid var(--line2)}
+.roi h3{font:600 17px var(--display);margin:0 0 14px}
+.bars .row{display:grid;grid-template-columns:170px 1fr 96px;gap:12px;align-items:center;margin-bottom:12px;font-size:14px}
+.bars .track{height:10px;border-radius:6px;background:var(--surface2);overflow:hidden}
+.bars .fill{height:100%;background:var(--c,var(--blue));border-radius:6px;transition:width .4s}
+.bars .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.inputs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 14px;margin-top:18px}
+.solo .inputs{grid-template-columns:repeat(5,1fr)}
+.inputs label{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--muted)}
+input.num{font:600 15px var(--body);color:var(--ink);background:var(--surface2);border:1px solid transparent;border-radius:10px;padding:8px 11px;width:100%;font-variant-numeric:tabular-nums}
+input.num:focus{outline:none;border-color:var(--blue);background:var(--surface)}
+.ghost{display:inline-flex;align-items:center;gap:8px;margin-top:18px;border:0;cursor:pointer;background:var(--surface2);color:var(--ink);font:600 13.5px var(--body);padding:9px 16px;border-radius:999px}
+.ghost svg{width:14px;height:14px;transition:transform .3s}
+.ghost[aria-expanded="true"] svg{transform:rotate(180deg)}
+.acts{width:100%;min-width:560px;font-size:14px;border-collapse:collapse}
+.acts td,.acts th{padding:9px 8px;border-bottom:1px solid var(--line2);text-align:left;vertical-align:top}
+.acts th{font:600 12.5px var(--body);color:var(--muted)}
+.acts input.num{width:70px;padding:6px 8px;font-size:14px}
+.acts .grp td{font:600 13px var(--body);color:var(--c);padding-top:14px}
+.acts small{display:block;color:var(--muted);font-size:12px}
+.cash{margin-top:16px;padding:13px 15px;border-radius:14px;background:color-mix(in srgb,var(--green) 11%,var(--surface));font-size:14.5px}
+.foot{padding:12px 22px 16px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line2)}
+.slider{display:flex;align-items:center;gap:12px;font-size:14px;margin-bottom:18px;flex-wrap:wrap}
+.slider input{accent-color:var(--blue);width:200px}
+.slider output{font:700 22px var(--display);min-width:28px;color:var(--blue)}
+.gbars .row{grid-template-columns:200px 1fr 110px}
+.gbars .row.more .fill{background:repeating-linear-gradient(90deg,var(--c) 0 12px,color-mix(in srgb,var(--c) 55%,var(--surface)) 12px 14px)}
+.gbars small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+[hidden]{display:none!important}
+
+/* content */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.three>div{background:var(--surface);border-radius:22px;padding:24px;box-shadow:var(--shadow)}
+.three>div:nth-child(1){--c:var(--green)} .three>div:nth-child(2){--c:var(--blue)} .three>div:nth-child(3){--c:var(--purple)}
+.three h3{font:600 20px var(--display);margin:0 0 8px;color:var(--c)}
+.three p{margin:0;color:var(--muted)}
+.tbl{overflow-x:auto;background:var(--surface);border-radius:22px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:15px}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line2);vertical-align:top}
+th{font:600 12.5px var(--body);color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+td.num small{display:block;font-weight:500;color:var(--green);font-size:13px}
+tr.rec td{background:color-mix(in srgb,var(--blue) 7%,var(--surface))}
+tr.tot td{border-top:2px solid var(--ink);font-weight:600}
+.tag{display:inline-block;font:600 11.5px var(--body);border-radius:999px;padding:2px 9px;margin-left:6px;color:#fff;background:var(--blue);vertical-align:1px}
+.lvl{display:inline-block;font:600 12px var(--body);border-radius:999px;padding:2px 10px;margin-bottom:4px}
+.hi{background:color-mix(in srgb,var(--red) 14%,transparent);color:var(--red)} .md{background:color-mix(in srgb,var(--orange) 16%,transparent);color:var(--orange)} .lo{background:color-mix(in srgb,var(--green) 16%,transparent);color:var(--green)}
+.note{font-size:13.5px;color:var(--muted);margin-top:12px;max-width:90ch}
+.role{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:start}
+.role blockquote{margin:0;font:700 30px/1.18 var(--display);letter-spacing:-.02em;background:linear-gradient(120deg,var(--indigo),var(--purple),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role ul{margin:0;padding-left:20px} .role li{margin-bottom:8px}
+.decide{background:var(--surface);border-radius:28px;padding:32px;margin-top:10px;box-shadow:var(--shadow)}
+.decide h2{font:700 32px var(--display);letter-spacing:-.02em;margin:0 0 20px}
+.decide .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.decide .grid>div{border-radius:20px;padding:20px;background:color-mix(in srgb,var(--c) 10%,var(--surface))}
+.decide .grid>div:nth-child(1){--c:var(--blue)} .decide .grid>div:nth-child(2){--c:var(--purple)} .decide .grid>div:nth-child(3){--c:var(--green)}
+.decide .n{font:700 34px/1 var(--display);color:var(--c);display:block;margin-bottom:8px}
+.decide b{display:block;font:600 17px var(--display);margin-bottom:4px}
+.decide p{margin:0;color:var(--muted);font-size:15px}
+.src{font-size:12.5px;color:var(--muted);padding:40px 0 60px}
+.src ol{padding-left:18px} .src li{margin-bottom:4px;word-break:break-word}
+@media (max-width:900px){
+  .hero,.role,.detail,.three{grid-template-columns:1fr}
+  .decide .grid,.facts{grid-template-columns:1fr}
+  .detail dl{grid-template-columns:1fr}
+  .links{display:none}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .roi-body{grid-template-columns:1fr}.roi-col+.roi-col{border-left:0;border-top:1px solid var(--line2)}
+  .solo .inputs{grid-template-columns:repeat(2,1fr)}
+  .bars .row,.gbars .row{grid-template-columns:110px 1fr 84px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media print{.nav{display:none}.map.focus .cols .node{opacity:1!important}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <div class="brand">Lotus Pecas <span>HubSpot · v4</span></div>
+  <div class="links">
+    <a href="#harita"><span class="tr">Harita</span><span class="it">Mappa</span></a>
+    <a href="#ozellikler"><span class="tr">Özellikler</span><span class="it">Funzionalità</span></a>
+    <a href="#kazanim"><span class="tr">Kazanım</span><span class="it">Ottimizzazione</span></a>
+    <a href="#yatirim"><span class="tr">Yatırım</span><span class="it">Investimento</span></a>
+    <a href="#riskler"><span class="tr">Riskler</span><span class="it">Rischi</span></a>
+    <a href="#sorumlu"><span class="tr">Sorumlu</span><span class="it">Responsabile</span></a>
+    <a href="#karar"><span class="tr">Karar</span><span class="it">Decisione</span></a>
+  </div>
+  <div class="toggle" role="group" aria-label="Dil / Lingua">
+    <button data-l="tr" aria-pressed="true">TR</button><button data-l="it" aria-pressed="false">IT</button>
+  </div>
+  <button class="theme" id="theme" aria-label="Light / Dark"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
+</div></nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <span class="ver tr">Ersan için teklif · 23/09/2026</span><span class="ver it">Proposta per Ersan · 23/09/2026</span>
+      <h1 class="tr">Tüm grubu tek bir araçta görmek. Önce İtalya'da kanıtlanır.</h1>
+      <h1 class="it">Un solo strumento per vedere tutto il gruppo. Provato prima in Italia.</h1>
+      <p class="lede tr">LP İtalya'da 12 aylık bir HubSpot pilotu: ana şirket tarafından finanse edilir ve diğer şirketlerin kopyalayabileceği bir şablon olarak kurulur. Sonunda ana şirket, her şirketin satışlarını, faturalarını, destek faaliyetlerini ve operasyonlarını tek ekranda görür.</p>
+      <p class="lede it">Un pilot HubSpot di 12 mesi in LP Italia, finanziato dalla casa madre, costruito come modello che le altre società copiano. Alla fine la casa madre vede vendite, fatture, assistenza e operatività di ogni società in un'unica schermata.</p>
+    </div>
+    <aside class="ask">
+      <h2><span class="tr">Talep ettiklerim</span><span class="it">Cosa chiedo</span></h2>
+      <ol class="tr">
+        <li><b>İtalya pilotunu onaylayın</b>: 12 ay, lisanslar ~$4,3k (liste fiyatı) + kurulum danışmanları €3–6k, hedef %50 daha az. Ana şirket bütçesinden.</li>
+        <li><b>Tek bir sorumlu atayın</b>: pilottan grup yaygınlaştırmasına kadar.</li>
+        <li><b>Aylık takip, 12. ayda karar</b>: ölçülen KPI'lara göre.</li>
+      </ol>
+      <ol class="it">
+        <li><b>Approvare il pilot Italia</b>: 12 mesi, licenze ~$4,3k (listino) + consulenti di setup €3–6k, obiettivo −50%. A carico della casa madre.</li>
+        <li><b>Nominare un solo responsabile</b>: dal pilot al rollout di gruppo.</li>
+        <li><b>Revisione mensile, decisione al mese 12</b>: su KPI misurati.</li>
+      </ol>
+    </aside>
+  </header>
+  <div class="facts">
+    <div><b class="tr">Zaten aktif</b><b class="it">Già attivo</b><span class="tr">AB veri merkezinde LP HubSpot portalı, ürün kataloğu yüklü, süreçler test edildi</span><span class="it">Portale HubSpot LP su data centre UE, catalogo caricato, processi testati</span></div>
+    <div><b>12 <span class="tr">ay</span><span class="it">mesi</span></b><span class="tr">Kurulum yazılımlar hazır olmadan başlar; karar rakamlarla verilir</span><span class="it">Il setup parte prima che i software siano pronti; si decide sui numeri</span></div>
+    <div><b>≤ 30</b><span class="tr">Tek bir ana şirketin bağlayıp raporlayabileceği şirket portalı</span><span class="it">Portali società che una casa madre può collegare e consolidare</span></div>
+  </div>
+
+  <!-- MAP -->
+  <section id="harita">
+    <div class="sech"><div>
+      <h2 class="sec tr">Pilot: bugünden 20 ülkeye</h2><h2 class="sec it">Il pilot, da oggi a 20 paesi</h2>
+      <p class="sub tr">Takvim, sonra harita. Her bloğa tıklayın; çizgiler neyin neyi beslediğini gösterir.</p>
+      <p class="sub it">Calendario, poi mappa. Clicca ogni blocco; le linee mostrano cosa alimenta cosa.</p>
+    </div></div>
+
+    <div class="tl"><div class="tl-in">
+      <div class="tl-cap tr">Pilot takvimi — Ekim'de onay varsayımıyla</div><div class="tl-cap it">Calendario del pilot — ipotesi di approvazione a ottobre</div>
+      <div class="months" id="months"></div>
+      <div class="bands">
+        <div class="band b1"><span class="tr">Kurulum</span><span class="it">Setup</span><small><span class="tr">Ay 1–4</span><span class="it">Mesi 1–4</span></small></div>
+        <div class="band b2"><span class="tr">Operasyon</span><span class="it">Operatività</span><small><span class="tr">Ay 5–10 · başlangıç ölçümü 5. ayda</span><span class="it">Mesi 5–10 · baseline al mese 5</span></small></div>
+        <div class="band b3"><span class="tr">Kanıt</span><span class="it">Prova</span><small><span class="tr">Ay 11–12 · karar</span><span class="it">Mesi 11–12 · decisione</span></small></div>
+      </div>
+    </div></div>
+
+    <div class="legend">
+      <span><i style="background:var(--green)"></i><span class="tr">Tamamlandı</span><span class="it">Fatto</span></span>
+      <span><i style="background:var(--orange)"></i><span class="tr">Bugünkü sorun</span><span class="it">Problema oggi</span></span>
+      <span><i style="background:linear-gradient(90deg,var(--blue),var(--indigo),var(--green))"></i><span class="tr">Pilot (12 ay)</span><span class="it">Pilot (12 mesi)</span></span>
+      <span><i style="border:1.5px dashed var(--orange);background:none"></i><span class="tr">Onaydan sonra</span><span class="it">Dopo il go</span></span>
+    </div>
+    <div class="mapbox">
+      <div class="mapscroll"><div class="map" id="map">
+        <svg class="edges" id="edges" aria-hidden="true"></svg>
+        <div class="cols" id="cols"></div>
+        <div class="owner" id="owner"></div>
+      </div></div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="ozellikler">
+    <div class="sech">
+      <div>
+        <h2 class="sec tr">Planlanan özellikler</h2><h2 class="sec it">Funzionalità previste</h2>
+        <p class="sub tr">Makro kategoriye göre. Otomatik = yapılandırıldıktan sonra manuel müdahale olmadan gerçekleşir.</p>
+        <p class="sub it">Per macro categoria. Automatico = avviene senza intervento manuale una volta configurato.</p>
+      </div>
+    </div>
+    <div class="fchips" id="fchips"></div>
+    <button class="cta" id="fcta" aria-expanded="false" aria-controls="fwrap"><span id="fctaT"></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="fwrap" id="fwrap" hidden>
+      <div class="fbar">
+        <span class="count" id="count"></span>
+        <div class="seg" role="group" id="ffilter">
+          <button data-f="all" aria-pressed="true"><span class="tr">Tümü</span><span class="it">Tutte</span></button>
+          <button data-f="auto" aria-pressed="false"><span class="tr">Yalnızca otomatik</span><span class="it">Solo automatiche</span></button>
+        </div>
+      </div>
+    <div class="fgrid" id="fgrid"></div>
+    <p class="fnote tr">Entegrasyonlar (SDI, Shopify, LP yönetim yazılımı, abonelikler, 3CX) kurulumda danışman desteğiyle yapılır; yönetim yazılımı LP yazılımı hazır olduğunda bağlanır. Fatura ve abonelikler için gereken HubSpot paketi, HubSpot ile yapılacak görüşmede teyit edilecektir.</p>
+    <p class="fnote it">Le integrazioni (SDI, Shopify, gestionale LP, abbonamenti, 3CX) si realizzano in setup con il supporto dei consulenti; il gestionale si collega quando il software LP è pronto. Il tier HubSpot necessario per fatture e abbonamenti va confermato in call con HubSpot.</p>
+    </div>
+  </section>
+
+  <!-- ROI -->
+  <section id="kazanim">
+    <div class="sech"><div>
+      <h2 class="sec tr">Tahmini kazanım: zaman ve para</h2><h2 class="sec it">Ottimizzazione stimata: tempo e denaro</h2>
+      <p class="sub tr">Önce İtalya, sonra grup. Her varsayım görünür ve değiştirilebilir; gerçek değerler 5. aydaki başlangıç ölçümüyle doğrulanır.</p>
+      <p class="sub it">Prima l'Italia, poi il gruppo. Ogni ipotesi è visibile e modificabile; i valori reali si validano con la baseline del mese 5.</p>
+    </div></div>
+    <div class="roi">
+      <div class="roi-top">
+        <div class="seg" role="group" id="tabs">
+          <button data-t="it" aria-pressed="true"><span class="tr">İtalya</span><span class="it">Italia</span></button>
+          <button data-t="grp" aria-pressed="false"><span class="tr">Grup (20 ülke)</span><span class="it">Gruppo (20 paesi)</span></button>
+        </div>
+        <div class="seg" role="group" id="scen">
+          <button data-s="0.6" aria-pressed="false"><span class="tr">İhtiyatlı</span><span class="it">Prudente</span></button>
+          <button data-s="1" aria-pressed="true"><span class="tr">Beklenen</span><span class="it">Atteso</span></button>
+        </div>
+      </div>
+      <div class="kpis" id="kpis"></div>
+
+      <div id="pane-it" class="roi-body solo">
+        <div class="roi-col">
+          <h3 class="tr">Kazanım nereden gelir</h3><h3 class="it">Da dove arriva il risparmio</h3>
+          <div class="bars" id="bucketBars"></div>
+          <div class="cash" id="cash"></div>
+          <div class="inputs" id="inputs"></div>
+          <button class="ghost" id="acta" aria-expanded="false" aria-controls="assump"><span id="actaT"></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="roi-col" id="assump" style="overflow-x:auto" hidden>
+          <h3 class="tr">Faaliyet bazında varsayımlar</h3><h3 class="it">Ipotesi per attività</h3>
+          <table class="acts"><thead><tr>
+            <th><span class="tr">Faaliyet</span><span class="it">Attività</span></th>
+            <th><span class="tr">Hacim/ay</span><span class="it">Volume/mese</span></th>
+            <th><span class="tr">Önce (dk)</span><span class="it">Prima (min)</span></th>
+            <th><span class="tr">Sonra (dk)</span><span class="it">Dopo (min)</span></th>
+            <th><span class="tr">Saat/ay</span><span class="it">Ore/mese</span></th>
+          </tr></thead><tbody id="acts"></tbody></table>
+        </div>
+      </div>
+
+      <div id="pane-grp" class="roi-col" hidden>
+        <div class="slider">
+          <label for="ppc"><span class="tr">Ülke başına ortalama kişi</span><span class="it">Persone medie per paese</span></label>
+          <input type="range" id="ppc" min="1" max="15" value="3"><output id="ppcv">3</output>
+          <span class="count tr" style="display:inline">3 = İtalya ile aynı, temkinli: yerleşik şirketler genellikle daha büyüktür.</span>
+          <span class="count it" style="display:inline">3 = come l'Italia, prudente: le società già avviate sono in genere più grandi.</span>
+        </div>
+        <div class="bars gbars" id="gbars"></div>
+      </div>
+
+      <div class="foot"><span class="tr">Saatlik maliyet: Eurostat · 1 tam zamanlı eşdeğer = yılda 1.700 saat</span><span class="it">Costo orario: Eurostat · 1 equivalente tempo pieno = 1.700 ore/anno</span></div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section>
+    <div class="three">
+      <div><h3 class="tr">Neden önce İtalya</h3><h3 class="it">Perché prima l'Italia</h3>
+        <p class="tr">İtalyan şirketi şimdi başlıyor: taşınacak eski bir CRM yok, bozulacak alışkanlık yok. Portal zaten var ve temel akışlar (lead, sözleşme, fatura, talep, telefon) gerçek LP ürünleriyle test edildi.</p>
+        <p class="it">La società italiana sta partendo ora: nessun CRM storico da migrare, nessuna abitudine da smontare. Il portale esiste e i flussi chiave (lead, contratti, fatture, ticket, telefono) sono stati testati su prodotti LP reali.</p></div>
+      <div><h3 class="tr">Neden 12 ay</h3><h3 class="it">Perché 12 mesi</h3>
+        <p class="tr">LP yazılımları henüz hazır değil ve yazılımsız ölçüm yanıltıcı olur. İlk dört ay kurulum, sonraki altı ay gerçek operasyon, son iki ay karşılaştırma. 12 ay, HubSpot'un yıllık sözleşmesiyle de örtüşür.</p>
+        <p class="it">I software LP non sono ancora pronti e misurare senza di loro darebbe dati falsati. Quattro mesi di setup, sei di operatività reale, due di confronto. 12 mesi coincidono anche con il contratto annuale HubSpot.</p></div>
+      <div><h3 class="tr">Neden gruba ölçeklenir</h3><h3 class="it">Perché scala sul gruppo</h3>
+        <p class="tr">İtalya bir kit olarak kurulur: aynı veri modeli, aynı aşamalar, aynı paneller. Her şirket kendi portalına sahip olur ve ana şirket bunları bağlar: bir Enterprise hesabı, Professional veya üzeri 29'a kadar şirket hesabını bağlayabilir.</p>
+        <p class="it">L'Italia viene costruita come kit: stesso modello dati, stesse fasi, stesse dashboard. Ogni società ha il proprio portale e la casa madre li collega: un account Enterprise può collegare fino a 29 account società su Professional o superiore.</p></div>
+    </div>
+  </section>
+
+  <!-- INVESTMENT -->
+  <section id="yatirim">
+    <div class="sech"><div>
+      <h2 class="sec tr">Pilot yatırımı</h2><h2 class="sec it">Investimento del pilot</h2>
+      <p class="sub tr">HubSpot liste fiyatları (USD), pazarlık öncesi. Yalnızca 12 aylık pilot; sonraki aşamalar ayrı bir karardır.</p>
+      <p class="sub it">Prezzi di listino HubSpot (USD), prima della trattativa. Solo il pilot di 12 mesi; le fasi successive sono una decisione separata.</p>
+    </div></div>
+    <div class="tbl"><table>
+      <thead><tr><th><span class="tr">Kalem</span><span class="it">Voce</span></th><th><span class="tr">İçerik</span><span class="it">Cosa include</span></th><th><span class="tr">Aylık</span><span class="it">Mensile</span></th><th><span class="tr">12 ay</span><span class="it">12 mesi</span></th></tr></thead>
+      <tbody>
+        <tr class="rec"><td><b class="tr">A · Yalın pilot</b><b class="it">A · Pilot snello</b><span class="tag tr">önerilen</span><span class="tag it">consigliato</span></td>
+          <td class="tr">Sales Hub Pro ×2 + Service Hub Pro ×2 lisans: iş akışları, satış hatları, talepler, özel raporlar. Yönetim ücretsiz salt-okunur lisanslarla. Pazarlama, kampanyalar başlayana kadar ücretsiz formlarla.</td>
+          <td class="it">Sales Hub Pro ×2 + Service Hub Pro ×2 seat: workflow, pipeline, ticket, report personalizzati. Direzione su seat view-only gratuiti. Marketing su form gratuiti finché non partono le campagne.</td>
+          <td class="num">$360</td><td class="num">$4.320</td></tr>
+        <tr><td><b class="tr">B · Tam platform</b><b class="it">B · Piattaforma completa</b></td>
+          <td class="tr">Customer Platform Professional, 5 lisans: pazarlama otomasyonu, Content ve Data hub eklenir.</td>
+          <td class="it">Customer Platform Professional, 5 seat: aggiunge automazione marketing, Content e Data hub.</td>
+          <td class="num">$1.300</td><td class="num">$15.600</td></tr>
+        <tr><td><b class="tr">Kurulum danışmanları</b><b class="it">Consulenti di setup</b></td>
+          <td class="tr">Entegrasyonlar için dış destek: SDI faturalama, abonelikler, Shopify, LP yönetim yazılımı, 3CX. Tüm pilot için bütçe; Edoardo'nun şirket içi optimizasyonuyla hedef %50 daha az.</td>
+          <td class="it">Supporto esterno per le integrazioni: fatturazione SDI, abbonamenti, Shopify, gestionale LP, 3CX. Budget per l'intero pilot; obiettivo −50% con l'ottimizzazione interna di Edoardo.</td>
+          <td class="num">—</td><td class="num">€3.000–6.000<small><span class="tr">hedef €1.500–3.000</span><span class="it">obiettivo €1.500–3.000</span></small></td></tr>
+        <tr class="tot"><td><span class="tr">Toplam pilot (A)</span><span class="it">Totale pilot (A)</span></td>
+          <td class="tr">Lisanslar + danışmanlar, 12 ay</td><td class="it">Licenze + consulenti, 12 mesi</td>
+          <td class="num">—</td><td class="num">$4.320 + €1.500–3.000<small><span class="tr">en fazla €6.000 danışman</span><span class="it">massimo €6.000 consulenti</span></small></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note tr">Dahil değil, teklif alınacak: olası tek seferlik HubSpot onboarding ücreti. A'daki lisans sayısı mevcut İtalya ekibine göre varsayılmıştır: teyit edilecek. 12 aylık pilot yıllık sözleşmeyle örtüşür: pilotun ötesinde bağlayıcılık yok.</p>
+    <p class="note it">Escluso, da quotare: eventuale fee di onboarding HubSpot una tantum. Il numero di seat in A assume il team Italia attuale: da confermare. Il pilot di 12 mesi coincide con il contratto annuale: nessun vincolo oltre il pilot.</p>
+  </section>
+
+  <!-- RISKS -->
+  <section id="riskler">
+    <div class="sech"><div><h2 class="sec tr">Riskler ve pilotun yanıtı</h2><h2 class="sec it">Rischi e come il pilot li gestisce</h2></div></div>
+    <div class="tbl"><table>
+      <thead><tr><th><span class="tr">Risk</span><span class="it">Rischio</span></th><th><span class="tr">Etki</span><span class="it">Impatto</span></th><th><span class="tr">Önlem</span><span class="it">Mitigazione</span></th></tr></thead>
+      <tbody id="risks"></tbody>
+    </table></div>
+  </section>
+
+  <!-- ALTERNATIVES -->
+  <section>
+    <div class="sech"><div><h2 class="sec tr">Değerlendirilen alternatifler</h2><h2 class="sec it">Alternative valutate</h2></div></div>
+    <div class="tbl"><table>
+      <thead><tr><th><span class="tr">Seçenek</span><span class="it">Opzione</span></th><th><span class="tr">Neden hayır</span><span class="it">Perché no</span></th></tr></thead>
+      <tbody id="alts"></tbody>
+    </table></div>
+  </section>
+
+  <!-- ROLE -->
+  <section id="sorumlu">
+    <div class="role">
+      <blockquote class="tr">Bir şablon ancak bir sahibi varsa ölçeklenir. Sahibi olmayı öneriyorum: grup için Lead Innovation &amp; Digital Ops.</blockquote>
+      <blockquote class="it">Un modello scala solo se qualcuno ne è responsabile. Propongo di esserlo: Lead Innovation &amp; Digital Ops di gruppo.</blockquote>
+      <div>
+        <ul class="tr">
+          <li>Başlangıç noktasını kurdu: portal, katalog, süreç testleri, temiz veri kaynağı.</li>
+          <li>İtalya pilotunu yönetir ve KPI'ları her ay Ersan'a raporlar.</li>
+          <li>Danışman maliyetini optimize eder: hedef %50 daha az.</li>
+          <li>Ülke kitini paketler ve her şirketin katılımını yönetir.</li>
+          <li>Tek standardı korur: tanımlar, erişim kuralları, paneller, otomasyonlar.</li>
+        </ul>
+        <ul class="it">
+          <li>Ha costruito il punto di partenza: portale, catalogo, test di processo, fonte dati pulita.</li>
+          <li>Gestisce il pilot Italia e riporta i KPI a Ersan ogni mese.</li>
+          <li>Ottimizza il costo dei consulenti: obiettivo −50%.</li>
+          <li>Impacchetta il kit paese e gestisce l'onboarding di ogni società.</li>
+          <li>Mantiene uno standard unico: definizioni, regole di accesso, dashboard, automazioni.</li>
+        </ul>
+        <p class="effort tr">Bu, mevcut iş akışlarına (ödemeler, POS, lisanslar) ek bir sorumluluktur: ayrılmış zaman ve emek gerektirir. Pilot aynı zamanda rolün testidir: aynı KPI'lar, aynı 12. ay değerlendirmesi.</p>
+        <p class="effort it">È un ruolo aggiuntivo rispetto ai workstream attuali (pagamenti, POS, licenze): richiede tempo ed effort dedicati. Il pilot è anche il test del ruolo: stessi KPI, stessa revisione al mese 12.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="karar">
+    <div class="decide">
+      <h2 class="tr">Gereken karar</h2><h2 class="it">Decisione richiesta</h2>
+      <div class="grid">
+        <div><span class="n">1</span><b class="tr">Pilot ve bütçe</b><b class="it">Pilot e budget</b><p class="tr">Seçenek A + kurulum danışmanları, ana şirket finansmanı. Kurulum onaydan hemen sonra başlar.</p><p class="it">Opzione A + consulenti di setup, finanziati dalla casa madre. Il setup parte subito dopo l'approvazione.</p></div>
+        <div><span class="n">2</span><b class="tr">Sorumlu</b><b class="it">Responsabile</b><p class="tr">İtalya'dan gruba kadar sorumlu tek bir isim.</p><p class="it">Un nome, responsabile dall'Italia al gruppo.</p></div>
+        <div><span class="n">3</span><b class="tr">Aylık takip, 12. ayda karar</b><b class="it">Revisione mensile, decisione al mese 12</b><p class="tr">Haritadaki KPI'lara göre devam, uzat veya dur.</p><p class="it">Go, estendere o fermare, sui KPI della mappa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="src">
+    <b class="tr">Kaynaklar (23/09/2026 tarihinde kontrol edildi)</b><b class="it">Fonti (consultate il 23/09/2026)</b>
+    <ol>
+      <li>HubSpot KB, multi-account management: knowledge.hubspot.com/account-management/set-up-multi-account-management</li>
+      <li>Resonate, HubSpot pricing 2026 (05/2026): resonatehq.com/hubspot-pricing</li>
+      <li>EngageBay, HubSpot pricing (08/2026): engagebay.com/blog/hubspot-pricing</li>
+      <li>Vedain, Sales Hub per-seat pricing 2026: vedain.com/blog/how-much-does-hubspot-cost-per-user-2026-pricing-guide</li>
+      <li>Eurostat, hourly labour costs 2025 (31/03/2026): ec.europa.eu/eurostat/statistics-explained/index.php?title=Hourly_labour_costs — Italy €32.0 (AgenSIR, 31/03/2026), Spain €26.4 (Diari de Tarragona), EU €34.9</li>
+      <li>Eurostat 2024 via Euronews (19/04/2025): France €43.7, Germany €43.4</li>
+      <li>LP HubSpot portal (23/09/2026), internal tests and weekly reports, 09/2026.</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+const N={
+ t1:{c:0,s:"done",
+  tr:["HubSpot portalı aktif","AB veri merkezi, EUR + USD, LP kataloğu yüklü","Haziran 2026'da oluşturuldu. Ürün ve hizmetler yüklendi; teklif, fatura ve online ödeme test edildi; lead, sözleşme ve talep sahipliği doğrulandı; 3CX santral bağlantısı test edildi.","Gerçek LP sürecinin çalışan bir kopyası.","Portal gerçek kullanıcılara hazır."],
+  it:["Portale HubSpot attivo","Data centre UE, EUR + USD, catalogo LP caricato","Creato a giugno 2026. Prodotti e servizi caricati; preventivi, fatture e pagamenti online testati; ownership di lead, contratti e ticket validata; collegamento centralino 3CX testato.","Una replica funzionante del processo reale LP.","Portale pronto per utenti reali."]},
+ t2:{c:0,s:"done",
+  tr:["Temiz veri kaynağı","Drive ve kontrol tablosu yeniden kuruldu","Standart müşteri ve bayi klasörleri, şablonlar ve fatura, sözleşme, teklif, vade ve tahsilat KPI'larını içeren yönetim tablosu.","Kurulumdaki veri aktarımının kaynağı.","Karmaşık veri taşıma yok."],
+  it:["Fonte dati pulita","Drive e foglio di controllo ricostruiti","Cartelle standard per clienti e rivenditori, template e foglio di gestione con fatture, contratti, preventivi, scadenze e KPI di incasso.","La fonte di import del setup.","Nessuna migrazione caotica."]},
+ t3:{c:0,s:"problem",
+  tr:["İş dağınık","E-posta, tablolar, telefon, sohbet","Lead'ler, aramalar, talepler ve faturalar farklı yerlerde. Kimse müşterinin tüm geçmişini görmüyor. Ana şirket hiçbir şeyi anlık görmüyor.","Pilotun ortadan kaldırdığı maliyet.","Başlangıç ölçümü 5. ayda, canlıya geçişte."],
+  it:["Il lavoro è frammentato","Email, fogli, telefono, chat","Lead, chiamate, ticket e fatture vivono in posti diversi. Nessuno vede la storia completa del cliente. La casa madre non vede nulla in tempo reale.","È il costo che il pilot elimina.","Baseline misurata al mese 5, al go-live."]},
+ f1:{c:1,s:"plan",
+  tr:["Veri modeli","Müşteri, fırsat ve talepler için tek şema","Şirketler, kişiler, fırsatlar, talepler, ürünler ve abonelikler; grup standardı alanlarla: ülke, tüzel kişilik, kanal (doğrudan veya bayi), ürün hattı (POS, ödemeler, lisanslar).","Bir kez tasarlanır, her ülke tekrar kullanır.","Aktif müşterilerin %100'ü aktarıldı."],
+  it:["Modello dati","Uno schema per clienti, deal e ticket","Aziende, contatti, deal, ticket, prodotti e abbonamenti con campi standard di gruppo: paese, entità legale, canale (diretto o rivenditore), linea prodotto (POS, pagamenti, licenze).","Progettato una volta, riusato da ogni paese.","100% dei clienti attivi importati."]},
+ f2:{c:1,s:"plan",
+  tr:["Roller ve erişim","Kim neyi görür ve düzenler","Satış, Destek, İdari ve Yönetim ekipleri. Ücretli lisans yalnızca işin yapıldığı yerde; yönetim ücretsiz salt-okunur lisanslarla. Erişim kuralları yazılı.","Ana şirketin tekrar kullanacağı yönetişim modeli.","Her kullanıcı doğru lisans ve ekipte."],
+  it:["Ruoli e accessi","Chi vede e modifica cosa","Team Sales, Support, Admin, Direzione. Seat a pagamento solo dove si lavora; direzione su seat view-only gratuiti. Regole di accesso scritte.","Il modello di governance che la casa madre riuserà.","Ogni utente con il seat e il team giusti."]},
+ f3:{c:1,s:"plan",
+  tr:["Entegrasyonlar","Santral, SDI faturalama, web, Shopify","3CX santrali her aramayı müşteri kaydına işler. Faturalama aracı mali kayıt (SDI) olarak kalır. Web formları lead oluşturur. Shopify siparişleri müşteri ve fırsat oluşturur. Danışman desteğiyle kurulur.","Veri elle değil, kendiliğinden girer.","Bu akışlarda sıfır mükerrer manuel giriş."],
+  it:["Integrazioni","Centralino, fatturazione SDI, sito, Shopify","Il centralino 3CX registra ogni chiamata sulla scheda cliente. Lo strumento di fatturazione resta il registro fiscale (SDI). I form del sito creano lead. Gli ordini Shopify creano cliente e deal. Realizzate con il supporto dei consulenti.","I dati entrano da soli, non a mano.","Zero doppio inserimento manuale su questi flussi."]},
+ o1:{c:2,s:"plan",
+  tr:["Satış hattı","Doğrudan ve bayi, tek mantık","Doğrudan ve bayi fırsatları için aynı aşamalar. Toplantılar, takipler ve teklifler fırsat üzerinde izlenir; takipler otomatik oluşturulur.","Ersan'ın güvenebileceği bir tahmin.","Tüm açık fırsatlar hatta, hiçbiri 14 günden fazla beklemede değil."],
+  it:["Pipeline vendite","Diretto e rivenditori, una logica","Stesse fasi per deal diretti e da rivenditore. Meeting, follow-up e preventivi tracciati sul deal; i follow-up si creano in automatico.","Un forecast di cui Ersan si può fidare.","Tutti i deal aperti in pipeline, nessuno fermo oltre 14 giorni."]},
+ o2:{c:2,s:"plan",
+  tr:["Destek masası","Her arama sahibi olan bir talebe dönüşür","Aramalar ve e-postalar otomatik talep açar, bir sorumluya atanır; müşterinin tüm geçmişi görünür.","İzlenebilir, ölçülebilir hizmet.","İlk yanıt süresi ölçülüyor ve düşüyor."],
+  it:["Assistenza","Ogni chiamata diventa un ticket con un responsabile","Chiamate ed email aprono ticket in automatico, assegnati a un responsabile, con la storia completa del cliente visibile.","Servizio tracciabile e misurabile.","Tempo di prima risposta misurato e in calo."]},
+ o6:{c:2,s:"plan",
+  tr:["Faturalama ve abonelikler","Otomatik fatura, yenileme, hatırlatma","Fırsat kazanıldığında fatura otomatik düzenlenir ve SDI'ya bağlı araçla gönderilir. Lisans abonelikleri otomatik yenilenir ve tahsil edilir; geciken ödemeler için hatırlatma gider.","Kapanıştan tahsilata elle iş yok.","Otomatik düzenlenen faturaların oranı."],
+  it:["Fatturazione e abbonamenti","Fattura, rinnovo, sollecito automatici","Alla chiusura del deal la fattura si emette in automatico e passa a SDI tramite lo strumento collegato. Gli abbonamenti licenze si rinnovano e incassano in automatico; i ritardi generano solleciti.","Dalla chiusura all'incasso senza lavoro manuale.","Quota di fatture emesse in automatico."]},
+ o7:{c:2,s:"plan",
+  tr:["LP yazılımı ve lisanslar","Yazılım hazır olduğunda bağlanır","LP yönetim yazılımı ve Shopify lisans akışı: sipariş → kimlik bilgileri → aktif lisans. Aktif lisanslar, satış noktaları ve terminaller müşteri kaydında görünür.","Her müşterinin neyi kullandığı tek bakışta.","Aktif lisansların %100'ü müşteriye bağlı."],
+  it:["Gestionale LP e licenze","Si collega quando il software è pronto","Gestionale LP e flusso licenze Shopify: ordine → credenziali → licenza attiva. Licenze attive, punti vendita e terminali visibili sulla scheda cliente.","Cosa usa ogni cliente, a colpo d'occhio.","100% delle licenze attive collegate al cliente."]},
+ o3:{c:2,s:"plan",
+  tr:["Lead toplama","Fırsatlara bağlı formlar ve segmentler","Her lead'in bir kaynağı var. Sektöre göre segmentler (HoReCa, perakende, güzellik, tütün bayileri). Ücretli pazarlama araçları yalnızca kampanyalar başladığında eklenir.","Hangi kanalın müşteri getirdiğini biliyoruz.","Lead'lerin %100'ü kaynaklı."],
+  it:["Acquisizione lead","Form e segmenti collegati ai deal","Ogni lead ha una fonte. Segmenti per settore (HoReCa, retail, beauty, tabacchi). Strumenti marketing a pagamento solo quando partono le campagne.","Sappiamo quale canale porta clienti.","100% dei lead con fonte."]},
+ o4:{c:2,s:"plan",
+  tr:["Yönetim paneli","İtalya, anlık, tek ekranda","Satış hattı, kazanılan fırsatlar, kesilen faturalar, tahsilatlar, açık talepler, yanıt süreleri, kişi bazında aktivite. Herkes için aynı rakamlar.","Aylık manuel raporlama ortadan kalkar.","Aylık manuel raporlara sıfır saat."],
+  it:["Dashboard direzione","Italia, in tempo reale, in una schermata","Pipeline, deal vinti, fatture emesse, incassi, ticket aperti, tempi di risposta, attività per persona. Stessi numeri per tutti.","Sparisce il report mensile manuale.","Zero ore su report mensili manuali."]},
+ p1:{c:3,s:"plan",
+  tr:["KPI'lar ve başlangıç","Beyan değil, ölçüm","Benimseme, veri bütünlüğü, fırsat yaşı, talep yanıt süresi, otomatik fatura oranı, idari saatler: 5. ay başlangıcı ile 12. ay karşılaştırması.","Karar için gerçekler.","Ersan'a aylık rapor."],
+  it:["KPI vs baseline","Misurati, non dichiarati","Adozione, completezza dati, età dei deal, tempo di risposta ticket, quota fatture automatiche, ore amministrative: baseline mese 5 vs mese 12.","Fatti per la decisione.","Report mensile a Ersan."]},
+ p2:{c:3,s:"plan",
+  tr:["Devam / dur","Ersan 12. ayda karar verir","Devam: kit paketlenir, ilk dalga ülkeler seçilir. Uzat: eksikler için 60 gün. Dur: paket düşürülür, veriler kalır.","Net bir karar noktası.","Karar kararlaştırılan tarihte alınır."],
+  it:["Go / no-go","Ersan decide al mese 12","Go: si impacchetta il kit e si scelgono i paesi della prima ondata. Estendere: 60 giorni per chiudere i gap. Stop: downgrade, i dati restano.","Un punto di decisione netto.","Decisione presa alla data concordata."]},
+ r1:{c:4,s:"future",
+  tr:["Ülke kiti","İtalya şablon olarak paketlenir","Veri modeli, satış hatları, iş akışları, paneller, erişim kuralları, kılavuz ve eğitim. Yeni şirket yeniden icat etmek yerine kopyalar.","Aylar değil, haftalar içinde yaygınlaştırma.","Kit belgelenmiş ve bir ülkede test edilmiş."],
+  it:["Kit paese","L'Italia impacchettata come modello","Modello dati, pipeline, workflow, dashboard, regole di accesso, playbook e formazione. Una nuova società lo copia invece di reinventarlo.","Rollout in settimane, non mesi.","Kit documentato e testato su un paese."]},
+ r2:{c:4,s:"future",
+  tr:["İlk dalga ülkeler","2–3 LP şirketi katılır","Ülkeleri ana şirket seçer. Her biri kendi portalına, yerel entegrasyonlara ve standart kite sahip olur.","Modelin taşınabildiğinin kanıtı.","İlk dalgadaki her şirket kit ile canlı."],
+  it:["Prima ondata paesi","2–3 società LP a bordo","La casa madre sceglie i paesi. Ognuno ha il proprio portale, integrazioni locali e il kit standard.","Prova che il modello è replicabile.","Ogni società della prima ondata attiva sul kit."]},
+ g2:{c:5,s:"future",
+  tr:["Grup standardı","Her yerde aynı tanımlar","Fırsat, kazanılan müşteri, talep her ülkede aynı anlama gelir. Ülkeler ancak böyle karşılaştırılabilir.","20 şirket arasında karşılaştırılabilir rakamlar.","Grup için tek bir veri sözlüğü."],
+  it:["Standard di gruppo","Stesse definizioni ovunque","Un deal, un cliente vinto, un ticket significano la stessa cosa in ogni paese. Solo così i paesi sono confrontabili.","Numeri confrontabili tra 20 società.","Un solo dizionario dati di gruppo."]},
+ g3:{c:5,s:"future",
+  tr:["Gelir görünümü","Her ERP'den faturalanan gelir","HubSpot muhasebe sistemi değildir. Her şirketin faturalanan geliri aktarılır; ana şirket satış hattını ve geliri yan yana görür.","'Her şirket ne kazanıyor' görünümü, doğru şekilde.","Şirket başına aylık gelir aktarımı."],
+  it:["Vista ricavi","Fatturato da ogni ERP","HubSpot non è il sistema contabile. Il fatturato di ogni società viene importato: la casa madre vede pipeline e ricavi affiancati.","La vista 'quanto guadagna ogni società', fatta in modo corretto.","Import mensile del fatturato per società."]},
+ g1:{c:5,s:"future",
+  tr:["Kontrol kulesi","Her şirket, tek ekran","Ana şirket hesabı her şirket portalını (en fazla 29) bağlar ve hepsini kapsayan grup raporları ve panelleri oluşturur.","Grubun merkezi vizyonu ve kontrolü.","Tüm şirketler tek panelde."],
+  it:["Control tower","Ogni società, una schermata","L'account della casa madre collega il portale di ogni società (fino a 29) e costruisce report e dashboard di gruppo.","Visione e controllo centrali del gruppo.","Tutte le società su un'unica dashboard."]},
+ own:{c:-1,s:"owner",
+  tr:["Lead Innovation & Digital Ops","İtalya pilotundan grup kontrol kulesine tek sorumlu — Edoardo Parini (önerilen)","Pilotu, KPI'ları, danışman maliyetini, ülke kitini ve grup standardını yönetir. Ersan'a aylık raporlar.","Sorumluluk tek noktada.","Pilotla aynı KPI'lar.","Mevcut iş akışlarına (ödemeler, POS, lisanslar) ek bir sorumluluktur: ayrılmış zaman ve emek gerektirir."],
+  it:["Lead Innovation & Digital Ops","Un solo responsabile dal pilot Italia alla control tower di gruppo — Edoardo Parini (proposto)","Gestisce pilot, KPI, costo dei consulenti, kit paese e standard di gruppo. Report mensile a Ersan.","Responsabilità in un unico punto.","Stessi KPI del pilot.","È un ruolo aggiuntivo rispetto ai workstream attuali (pagamenti, POS, licenze): richiede tempo ed effort dedicati."]}
+};
+const E=[["t1","f1"],["t1","f3"],["t2","f1"],["t3","f2"],["t3","f3"],["f1","o1"],["f1","o2"],["f1","o3"],["f2","o4"],["f3","o2"],["f3","o6"],["f3","o7"],["o7","o6"],["o3","o1"],["o1","o4"],["o2","o4"],["o6","o4"],["o4","p1"],["p1","p2"],["p2","r1"],["r1","r2"],["r1","g2"],["r2","g1"],["g2","g1"],["g3","g1"]];
+const COLS={tr:[["Bugün","İtalya, Eylül 2026"],["Kurulum","Ay 1–4"],["Operasyon","Ay 5–10"],["Kanıt","Ay 11–12"],["Çoğaltma","Onaydan sonra"],["Grup","20 ülke"]],
+            it:[["Oggi","Italia, set. 2026"],["Setup","Mesi 1–4"],["Operatività","Mesi 5–10"],["Prova","Mesi 11–12"],["Replica","Dopo il go"],["Gruppo","20 paesi"]]};
+const L={tr:{what:"Ne olur",out:"Sonuç",kpi:"Ölçüt",con:"Bağlantılı",hint:"Ayrıntılar için haritadan bir blok seçin.",open:"Detayları aç",close:"Kapat",badge:"Ek sorumluluk",owner:"Sorumlu",count:(n,a)=>`<b>${n}</b> özellik, <b>${a}</b> otomatik`,auto:"Otomatik",man:"Manuel / yarı otomatik"},
+         it:{what:"Cosa succede",out:"Risultato",kpi:"Misurato da",con:"Collegato a",hint:"Seleziona un blocco della mappa per i dettagli.",open:"Apri dettagli",close:"Chiudi",badge:"Ruolo aggiuntivo",owner:"Responsabile",count:(n,a)=>`<b>${n}</b> funzionalità, <b>${a}</b> automatiche`,auto:"Automatico",man:"Manuale / assistito"}};
+const MONTHS={tr:["Eki","Kas","Ara","Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl"],it:["Ott","Nov","Dic","Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set"]};
+const F=[
+ {tr:"Satış & CRM",it:"Vendite & CRM",i:[
+  [0,"Müşteri, şirket ve kişiler için tek kayıt","Anagrafica unica di clienti, aziende e contatti"],
+  [0,"Doğrudan ve bayi satış hattı, standart aşamalar","Pipeline diretta e rivenditori con fasi standard"],
+  [1,"Lead'lerin satış temsilcisine otomatik atanması","Assegnazione automatica dei lead al commerciale"],
+  [1,"Bekleyen fırsatlarda otomatik takip ve görev","Follow-up e task automatici sui deal fermi"],
+  [1,"LP kataloğundan otomatik teklif","Preventivi automatici dal catalogo LP"],
+  [1,"E-posta ve aramalar müşteri kaydına otomatik işlenir","Email e chiamate registrate in automatico sulla scheda cliente"],
+  [0,"Toplantı bağlantıları ve senkronize takvim","Link per meeting e calendario sincronizzato"]]},
+ {tr:"Faturalama, ödemeler, abonelikler",it:"Fatturazione, pagamenti, abbonamenti",i:[
+  [1,"Fırsat kazanıldığında otomatik fatura düzenleme","Emissione automatica della fattura alla chiusura del deal"],
+  [1,"Bağlı faturalama aracıyla SDI'ya otomatik gönderim","Invio automatico a SDI tramite lo strumento di fatturazione collegato"],
+  [1,"Faturada online ödeme bağlantısı","Link di pagamento online in fattura"],
+  [1,"Lisans aboneliklerinin otomatik yönetimi: yenileme, tekrarlayan tahsilat","Gestione automatica degli abbonamenti licenze: rinnovi e addebiti ricorrenti"],
+  [1,"Geciken ödemeler için otomatik hatırlatma","Solleciti automatici sui pagamenti in ritardo"],
+  [1,"Tahsilat durumu müşteri kaydında anlık","Stato incassi aggiornato in tempo reale sul cliente"]]},
+ {tr:"Lisanslar & Shopify",it:"Licenze & Shopify",i:[
+  [1,"Shopify siparişi → HubSpot'ta müşteri ve fırsat","Ordine Shopify → cliente e deal in HubSpot"],
+  [1,"Sipariş → kimlik bilgileri → aktif lisans, manuel adım yok","Ordine → credenziali → licenza attiva, senza passaggi manuali"],
+  [1,"Lisans yenileme veya iptali müşteri durumunu günceller","Rinnovo o disdetta della licenza aggiornano lo stato cliente"],
+  [1,"Bayi satışları kanal olarak otomatik izlenir","Vendite dei rivenditori tracciate in automatico come canale"]]},
+ {tr:"Destek & santral",it:"Assistenza & centralino",i:[
+  [1,"3CX: her arama müşteri kaydına işlenir","3CX: ogni chiamata registrata sulla scheda cliente"],
+  [1,"Arama, e-posta ve formdan otomatik talep","Ticket automatico da chiamata, email e form"],
+  [1,"Konu ve SLA'ya göre otomatik talep atama","Assegnazione automatica dei ticket per competenza e SLA"],
+  [0,"Operatör müşterinin tüm geçmişini görür","L'operatore vede lo storico completo del cliente"],
+  [0,"Müşteriler ve bayiler için bilgi bankası","Knowledge base per clienti e rivenditori"],
+  [1,"Talep kapanınca otomatik memnuniyet anketi","Sondaggio di soddisfazione automatico a ticket chiuso"]]},
+ {tr:"Yönetim yazılımı & back office",it:"Gestionale & back office",i:[
+  [1,"LP yönetim yazılımı senkronizasyonu: lisanslar, satış noktaları, terminaller","Sync con il gestionale LP: licenze, punti vendita, terminali"],
+  [0,"Sözleşmeler ve belgeler müşteriye bağlı","Contratti e documenti collegati al cliente"],
+  [1,"Sözleşme vadeleri ve yenilemeler için otomatik uyarı","Alert automatici su scadenze contratti e rinnovi"],
+  [1,"Yeni müşteri kurulumu: otomatik görev listesi","Onboarding nuovo cliente: checklist di task automatica"],
+  [1,"Veri kalitesi: mükerrer kayıt ve zorunlu alan kontrolü","Qualità dati: deduplica e campi obbligatori"]]},
+ {tr:"Pazarlama",it:"Marketing",i:[
+  [1,"Web formu → kaynaklı lead","Form del sito → lead con fonte"],
+  [1,"Sektöre göre dinamik segmentler: HoReCa, perakende, güzellik, tütün bayileri","Segmenti dinamici per settore: HoReCa, retail, beauty, tabacchi"],
+  [1,"E-posta kampanyaları ve otomatik besleme (seçenek B)","Campagne email e nurturing automatico (opzione B)"],
+  [0,"Kampanya → fırsat → gelir ilişkilendirmesi","Attribuzione campagna → deal → ricavo"]]},
+ {tr:"Yönetim & yönetişim",it:"Direzione & governance",i:[
+  [1,"Anlık panel: satış hattı, faturalar, tahsilat, talepler","Dashboard live: pipeline, fatture, incassi, ticket"],
+  [1,"Haftalık raporlar e-postayla otomatik","Report settimanali automatici via email"],
+  [0,"Roller, izinler, ekipler","Ruoli, permessi, team"],
+  [0,"Kişi bazında aktivite kaydı","Registro attività per persona"]]},
+ {tr:"Grup (onaydan sonra)",it:"Gruppo (dopo il go)",i:[
+  [0,"Kopyalanabilir ülke kiti","Kit paese replicabile"],
+  [1,"Tüm şirketler için tek grup paneli","Dashboard di gruppo unica per tutte le società"],
+  [0,"Ortak veri standardı","Standard dati comune"]]}
+];
+const R=[
+ ["hi","Ekip kullanmıyor","Il team non lo usa","Yüksek: araç bir maliyete dönüşür","Alto: lo strumento diventa un costo","Kullanım 5. aydan itibaren bir KPI. Kural: HubSpot'ta yoksa, olmamıştır.","L'utilizzo è un KPI dal mese 5. Regola: se non è in HubSpot, non è successo."],
+ ["md","LP yazılımları hazır değil","Software LP non pronti","Orta: entegrasyon gecikir","Medio: l'integrazione slitta","Kurulum yazılıma bağlı değil; yazılım hazır olduğunda bağlanır.","Il setup non dipende dal software; si collega quando è pronto."],
+ ["lo","Danışman maliyeti aşımı","Sforamento costi consulenti","Düşük: en fazla €6.000","Basso: massimo €6.000","Sabit kapsamlı teklifler; işin çoğu şirket içinde, hedef %50 daha az.","Preventivi a scope fisso; gran parte del lavoro interno, obiettivo −50%."],
+ ["md","İtalyan e-faturası (SDI)","Fatturazione elettronica (SDI)","Orta: HubSpot mali sistem değildir","Medio: HubSpot non è un sistema fiscale","Mevcut faturalama aracı mali kayıt olarak kalır; HubSpot faturayı tetikler ve durumu alır.","Lo strumento di fatturazione resta il registro fiscale; HubSpot innesca la fattura e ne riceve lo stato."],
+ ["md","CRM'in ötesinde grup görünümü","Vista di gruppo oltre il CRM","Orta: kâr marjları muhasebede","Medio: i margini vivono in contabilità","HubSpot satış hattını, faturaları, talepleri gösterir. Gelir her şirketin ERP'sinden aktarılır.","HubSpot mostra pipeline, fatture, ticket. Il fatturato si importa dall'ERP di ogni società."],
+ ["md","Ülke farklılıkları","Differenze tra paesi","Orta: yerel vergi, dil, kanallar","Medio: fisco, lingua, canali locali","Her şirkete ayrı portal; yalnızca tanımlar ve paneller standarttır.","Portale separato per società; standard solo definizioni e dashboard."]
+];
+const A=[
+ ["Drive, tablolar ve e-postada kalmak","Restare su Drive, fogli ed email","Bir kişi için çalışır, bir grup için değil. Ana şirkete anlık görünüm yok, otomasyon yok.","Funziona per una persona, non per un gruppo. Nessuna vista live per la casa madre, nessuna automazione."],
+ ["HubSpot ücretsiz veya Starter","HubSpot free o Starter","İş akışı otomasyonu ve özel rapor yok: pilotun kanıtlaması gereken tam da bu.","Niente workflow automatici né report personalizzati: proprio ciò che il pilot deve dimostrare."],
+ ["Salesforce veya kurumsal CRM","Salesforce o CRM enterprise","Daha ağır kurulum, uzman gerektirir. Portal ve testler HubSpot'ta zaten mevcut.","Setup più pesante, servono specialisti. Portale e test esistono già su HubSpot."],
+ ["Her ülke kendi aracını seçer","Ogni paese sceglie il suo strumento","Ortak tanım yok, dolayısıyla grup karşılaştırması yok: ana şirketin bugünkü sorunu.","Nessuna definizione comune, quindi nessun confronto di gruppo: il problema di oggi."]
+];
+const BOLT='<svg class="bolt" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M9.2 1 3 9h4.3L6.6 15 13 6.8H8.6z"/></svg>';
+const LV={hi:["Yüksek","Alto"],md:["Orta","Medio"],lo:["Düşük","Basso"]};
+
+const ST={people:3,newC:8,ren:8,inv:25,tix:40,late:20,cost:32,pilot:6500,rev:0,dso:10};
+const ACT=[
+ {b:"pay",v:"inv",pre:15,post:2,tr:["Fatura düzenleme + SDI gönderimi + arşiv","fatura başına"],it:["Emissione fattura + invio SDI + archiviazione","per fattura"]},
+ {b:"pay",v:"ren",pre:20,post:3,tr:["Abonelik yenileme: tahsilat, kontrol, güncelleme","yenileme başına"],it:["Rinnovo abbonamento: addebito, verifica, aggiornamento","per rinnovo"]},
+ {b:"pay",v:"late",pre:20,post:2,tr:["Geciken ödeme hatırlatması","geciken fatura başına"],it:["Sollecito pagamento in ritardo","per fattura in ritardo"]},
+ {b:"bo",v:"newC",pre:45,post:15,tr:["Yeni müşteri kurulumu: kayıt, sözleşme, lisans, klasör","yeni müşteri başına"],it:["Onboarding nuovo cliente: anagrafica, contratto, licenza, cartelle","per nuovo cliente"]},
+ {b:"bo",v:"tix",pre:6,post:1,tr:["Talep kaydı ve geçmiş arama","talep başına"],it:["Registrazione ticket e ricerca storico","per ticket"]},
+ {b:"bo",v:"one",pre:480,post:30,tr:["Aylık yönetim raporu","ay başına"],it:["Report mensile per la direzione","al mese"]},
+ {b:"dig",v:"ppl",pre:60,post:20,tr:["E-posta, tablo ve Drive'da bilgi arama","kişi başına, haftalık"],it:["Ricerca informazioni tra email, fogli e Drive","a persona, a settimana"]},
+ {b:"dig",v:"ppl",pre:30,post:5,tr:["Sistemler arası mükerrer veri girişi","kişi başına, haftalık"],it:["Doppio inserimento dati tra sistemi","a persona, a settimana"]}
+];
+const BK={pay:{tr:"Ödemeler & faturalama",it:"Pagamenti & fatturazione"},bo:{tr:"Back office",it:"Back office"},dig:{tr:"Dijitalleşme",it:"Digitalizzazione"}};
+const INP=[["people","Süreçlerdeki kişi","Persone nei processi"],["newC","Yeni müşteri/ay","Nuovi clienti/mese"],["ren","Lisans yenileme/ay","Rinnovi licenze/mese"],["inv","Fatura/ay","Fatture/mese"],["tix","Talep/ay","Ticket/mese"],["late","Geciken fatura %","Fatture in ritardo %"],["cost","Saatlik işgücü maliyeti (€)","Costo orario del lavoro (€)"],["pilot","Pilot maliyeti (€)","Costo del pilot (€)"],["rev","Aylık faturalanan tutar (€, isteğe bağlı)","Fatturato mensile (€, facoltativo)"],["dso","Daha hızlı tahsilat (gün)","Incasso anticipato (giorni)"]];
+const CTRY=[["İtalya","Italia",32.0,"2025"],["İspanya","Spagna",26.4,"2025"],["Fransa","Francia",43.7,"2024"],["Almanya","Germania",43.4,"2024"]];
+const FTEH=1700; const BC={pay:"blue",bo:"orange",dig:"purple"}; const GC=["green","orange","blue","indigo","teal"]; let scen=1, tab="it", ppc=3;
+const fmt=(n,d=0)=>n.toLocaleString(lang==="tr"?"tr-TR":"it-IT",{maximumFractionDigits:d,minimumFractionDigits:d});
+function vol(a){const w=52/12;return a.v==="late"?ST.inv*ST.late/100:a.v==="one"?1:a.v==="ppl"?ST.people*w:ST[a.v];}
+function hoursMonth(){return ACT.map(a=>vol(a)*Math.max(0,a.pre-a.post)/60);}
+function buildROI(){
+  const k=lang==="tr"?0:1;
+  $("inputs").innerHTML=INP.map(([id,t,i])=>`<label>${k?i:t}<input class="num" type="number" min="0" step="any" data-in="${id}" value="${ST[id]}"></label>`).join("");
+  $("inputs").querySelectorAll("[data-in]").forEach(x=>x.oninput=()=>{ST[x.dataset.in]=parseFloat(x.value)||0;calc();});
+  let last="";
+  $("acts").innerHTML=ACT.map((a,i)=>{const g=a.b!==last?`<tr class="grp" style="--c:var(--${BC[a.b]})"><td colspan="5">${BK[a.b][lang]}</td></tr>`:"";last=a.b;
+    return g+`<tr><td>${a[lang][0]}<small>${a[lang][1]}</small></td><td class="num" data-vol="${i}"></td>
+      <td><input class="num" type="number" min="0" data-a="${i}" data-f="pre" value="${a.pre}"></td>
+      <td><input class="num" type="number" min="0" data-a="${i}" data-f="post" value="${a.post}"></td><td class="num" data-h="${i}"></td></tr>`;}).join("");
+  $("acts").querySelectorAll("[data-a]").forEach(x=>x.oninput=()=>{ACT[x.dataset.a][x.dataset.f]=parseFloat(x.value)||0;calc();});
+  calc();
+}
+function calc(){
+  const k=lang==="tr"?0:1, hm=hoursMonth();
+  ACT.forEach((a,i)=>{$("acts").querySelector(`[data-vol="${i}"]`).textContent=a.v==="ppl"?`${fmt(ST.people)}×4,3`:fmt(vol(a),0);$("acts").querySelector(`[data-h="${i}"]`).textContent=fmt(hm[i]*scen,1);});
+  const itM=hm.reduce((x,y)=>x+y,0)*scen, itY=itM*12, itE=itY*ST.cost, mE=itM*ST.cost;
+  const pb=mE>0?ST.pilot/mE:Infinity;
+  const bk={pay:0,bo:0,dig:0}; ACT.forEach((a,i)=>bk[a.b]+=hm[i]*scen*12);
+  const mx=Math.max(...Object.values(bk),1);
+  $("bucketBars").innerHTML=Object.entries(bk).map(([b,h])=>`<div class="row" style="--c:var(--${BC[b]})"><span>${BK[b][lang]}</span><div class="track"><div class="fill" style="width:${h/mx*100}%"></div></div><span class="v">${fmt(h)} ${k?"h/anno":"sa/yıl"}</span></div>`).join("");
+  const cashV=ST.rev*ST.dso/30;
+  $("cash").innerHTML=ST.rev>0
+    ? (k?`Cassa anticipata una tantum grazie a incassi più rapidi: <b>€${fmt(cashV)}</b>`:`Tahsilat hızlanmasıyla bir kerelik nakit öne çekme: <b>€${fmt(cashV)}</b>`)
+    : (k?"Inserisci il fatturato mensile per vedere l'effetto degli incassi più rapidi sulla cassa.":"Daha hızlı tahsilatın nakit etkisini görmek için aylık faturalanan tutarı girin.");
+  // group
+  const per=hm.reduce((x,y)=>x+y,0)*scen*12/ST.people; // hours per person per year
+  const itH=per*ST.people, cH=per*ppc;
+  const rows=CTRY.map((c,i)=>{const h=i===0?itH:cH;return {n:c[k],s:`€${fmt(c[2],1)}/h · Eurostat ${c[3]}`,e:h*c[2],h};});
+  const oH=cH*16, oE=oH*34.9;
+  rows.push({n:k?"Altri 16 paesi":"Diğer 16 ülke",s:(k?"media UE":"AB ortalaması")+" €34,9/h · Eurostat 2025",e:oE,h:oH,more:1});
+  const gH=rows.reduce((x,r)=>x+r.h,0), gE=rows.reduce((x,r)=>x+r.e,0), gmx=Math.max(...rows.map(r=>r.e),1);
+  $("gbars").innerHTML=rows.map((r,j)=>`<div class="row${r.more?' more':''}" style="--c:var(--${GC[j]})"><span>${r.n}<small>${r.s}</small></span><div class="track"><div class="fill" style="width:${r.e/gmx*100}%"></div></div><span class="v">€${fmt(r.e/1000,1)}k<small>${fmt(r.h)} ${k?"h":"sa"}</small></span></div>`).join("");
+  const L2=k?{h:"ore/anno liberate",f:"persone a tempo pieno equivalenti",e:"valore annuo del tempo",p:"mesi di operatività per ripagare il pilot (il pilot ne ha 8)",gh:"ore/anno liberate nel gruppo",gf:"persone a tempo pieno equivalenti",ge:"valore annuo del tempo nel gruppo",gc:"paesi, stesso kit"}
+               :{h:"saat/yıl serbest kalan",f:"tam zamanlı kişi eşdeğeri",e:"yıllık zaman değeri",p:"pilotun kendini ödediği operasyon ayı (pilotta 8 ay var)",gh:"grupta serbest kalan saat/yıl",gf:"tam zamanlı kişi eşdeğeri",ge:"grupta yıllık zaman değeri",gc:"ülke, aynı kit"};
+  $("kpis").innerHTML = tab==="it"
+   ? `<div class="kpi"><b>${fmt(itY)}</b><span>${L2.h}</span></div><div class="kpi"><b>${fmt(itY/FTEH,2)}</b><span>${L2.f}</span></div><div class="kpi hl"><b>€${fmt(itE/1000,1)}k</b><span>${L2.e}</span></div><div class="kpi"><b>${isFinite(pb)?fmt(pb,1):"—"}</b><span>${L2.p}</span></div>`
+   : `<div class="kpi"><b>${fmt(gH)}</b><span>${L2.gh}</span></div><div class="kpi"><b>${fmt(gH/FTEH,1)}</b><span>${L2.gf}</span></div><div class="kpi hl"><b>€${fmt(gE/1000)}k</b><span>${L2.ge}</span></div><div class="kpi"><b>20</b><span>${L2.gc}</span></div>`;
+}
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{tab=b.dataset.t;document.querySelectorAll("#tabs button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  $("pane-it").hidden=tab!=="it";$("pane-grp").hidden=tab==="it";calc();});
+document.querySelectorAll("#scen button").forEach(b=>b.onclick=()=>{scen=parseFloat(b.dataset.s);document.querySelectorAll("#scen button").forEach(x=>x.setAttribute("aria-pressed",x===b));calc();});
+let lang="tr", sel=null, onlyAuto=false;
+const $=id=>document.getElementById(id), root=document.documentElement, map=$("map"), svg=$("edges"), det=$("detail");
+const cls={done:"done",problem:"problem",plan:"plan",future:"",owner:""};
+function build(){
+  $("months").innerHTML=MONTHS[lang].map((m,i)=>`<div class="m">${m}</div>`).join("");
+  const cols=$("cols"); cols.innerHTML="";
+  COLS[lang].forEach((h,i)=>{
+    const c=document.createElement("div"); c.style.setProperty("--c",`var(--p${i})`);
+    c.innerHTML=`<div class="colhead"><b>${h[0]}</b><span>${h[1]}</span></div>`;
+    Object.entries(N).filter(([,n])=>n.c===i).forEach(([id,n])=>c.appendChild(nodeEl(id,n)));
+    cols.appendChild(c);
+  });
+  $("owner").innerHTML=""; $("owner").appendChild(nodeEl("own",N.own));
+  buildFeatures(); buildTables(); buildROI(); setActa();
+  requestAnimationFrame(draw); show(sel);
+}
+function nodeEl(id,n){
+  const b=document.createElement("button"); b.className="node "+cls[n.s]; b.dataset.id=id; b.setAttribute("aria-expanded",sel===id);
+  const t=n[lang];
+  b.innerHTML = id==="own"
+    ? `<span><b>${t[0]}<span class="badge">${L[lang].badge}</span></b><small>${t[1]}</small></span><span class="open">${sel===id?L[lang].close:L[lang].open}</span>`
+    : `<span><b>${t[0]}</b><small>${t[1]}</small></span>`;
+  b.onclick=()=>{sel=sel===id?null:id; refresh(); if(sel) det.scrollIntoView({block:"nearest",behavior:"smooth"});};
+  return b;
+}
+function refresh(){ show(sel); draw();
+  map.querySelectorAll(".node").forEach(n=>n.setAttribute("aria-expanded",n.dataset.id===sel));
+  const o=map.querySelector('[data-id="own"] .open'); if(o) o.textContent=sel==="own"?L[lang].close:L[lang].open; }
+function neigh(id){return E.filter(e=>e.includes(id)).map(e=>e[0]===id?e[1]:e[0]);}
+function draw(){
+  const r=map.getBoundingClientRect(); svg.setAttribute("viewBox",`0 0 ${r.width} ${r.height}`);
+  svg.innerHTML=E.map(([a,b])=>{
+    const A=map.querySelector(`[data-id="${a}"]`).getBoundingClientRect(), B=map.querySelector(`[data-id="${b}"]`).getBoundingClientRect();
+    const hot=sel&&(a===sel||b===sel)?"hot":"";
+    if(B.left>A.right-2){const x1=A.right-r.left,y1=A.top+A.height/2-r.top,x2=B.left-r.left,y2=B.top+B.height/2-r.top,m=(x2-x1)/2;
+      return `<path class="${hot}" d="M${x1},${y1} C${x1+m},${y1} ${x2-m},${y2} ${x2},${y2}"/>`;}
+    const x1=A.right-r.left,y1=A.top+A.height/2-r.top,x2=B.right-r.left,y2=B.top+B.height/2-r.top,o=Math.max(x1,x2)+14;
+    return `<path class="${hot}" d="M${x1},${y1} C${o},${y1} ${o},${y2} ${x2},${y2}"/>`;
+  }).join("");
+  map.classList.toggle("focus",!!sel&&sel!=="own");
+  const nb=sel?neigh(sel):[];
+  map.querySelectorAll(".node").forEach(n=>{n.classList.toggle("sel",n.dataset.id===sel);n.classList.toggle("near",nb.includes(n.dataset.id));});
+}
+function show(id){
+  const l=L[lang];
+  if(!id){det.innerHTML=`<p class="hint">${l.hint}</p>`;return;}
+  const n=N[id],t=n[lang];
+  det.style.setProperty("--c",n.c>=0?`var(--p${n.c})`:"var(--purple)");
+  const phase=n.c>=0?COLS[lang][n.c][0]+" · "+COLS[lang][n.c][1]:l.owner;
+  const chips=neigh(id).map(x=>`<button data-go="${x}">${N[x][lang][0]}</button>`).join("");
+  det.innerHTML=`<div><div class="k">${phase}</div><h3>${t[0]}</h3><p>${t[1]}</p>${t[5]?`<div class="effort">${t[5]}</div>`:""}</div>
+   <dl><dt>${l.what}</dt><dd>${t[2]}</dd><dt>${l.out}</dt><dd>${t[3]}</dd><dt>${l.kpi}</dt><dd>${t[4]}</dd>
+   ${chips?`<dt>${l.con}</dt><dd class="chips">${chips}</dd>`:""}</dl>`;
+  det.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{sel=b.dataset.go;refresh();});
+}
+const FC=["blue","green","orange","indigo","purple","pink","teal","gray"];
+let fOpen=false, aOpen=false;
+function buildFeatures(){
+  const k=lang==="tr"?1:2; let n=0,a=0;
+  $("fchips").innerHTML=F.map((c,j)=>`<span class="fchip" style="--c:var(--${FC[j]})"><i></i>${c[lang]} <span>${c.i.length}</span></span>`).join("");
+  $("fgrid").innerHTML=F.map((c,j)=>{
+    const au=c.i.filter(x=>x[0]).length; n+=c.i.length; a+=au;
+    return `<div class="fcat${au?'':' empty'}" style="--c:var(--${FC[j]})"><h3>${c[lang]}<span>${au}/${c.i.length}</span></h3><ul>${
+      c.i.map(x=>`<li class="${x[0]?'auto':''}">${x[0]?BOLT:'<i class="dot"></i>'}<span>${x[k]}</span></li>`).join("")}</ul></div>`;
+  }).join("");
+  $("count").innerHTML=`<span>${L[lang].count(n,a)}</span>`+`<span class="flegend" style="margin-left:14px;display:inline-flex"><span>${BOLT} ${L[lang].auto}</span><span><i class="dot"></i> ${L[lang].man}</span></span>`;
+  $("fgrid").classList.toggle("only-auto",onlyAuto);
+  $("fctaT").textContent = fOpen ? (lang==="tr"?"Listeyi kapat":"Chiudi l'elenco") : (lang==="tr"?`${n} özelliğin tamamını keşfet`:`Esplora tutte le ${n} funzionalità`);
+}
+function toggleF(){fOpen=!fOpen;$("fwrap").hidden=!fOpen;$("fcta").setAttribute("aria-expanded",fOpen);buildFeatures();}
+function setActa(){$("actaT").textContent=aOpen?(lang==="tr"?"Varsayımları gizle":"Nascondi ipotesi per attività"):(lang==="tr"?"Faaliyet bazında varsayımları göster":"Mostra ipotesi per attività");}
+function toggleA(){aOpen=!aOpen;$("assump").hidden=!aOpen;$("pane-it").classList.toggle("solo",!aOpen);$("acta").setAttribute("aria-expanded",aOpen);setActa();}
+function buildTables(){
+  const k=lang==="tr"?0:1;
+  $("risks").innerHTML=R.map(r=>`<tr><td>${r[1+k]}</td><td><span class="lvl ${r[0]}">${LV[r[0]][k]}</span><br>${r[3+k].split(": ")[1]||""}</td><td>${r[5+k]}</td></tr>`).join("");
+  $("alts").innerHTML=A.map(r=>`<tr><td>${r[k]}</td><td>${r[2+k]}</td></tr>`).join("");
+}
+document.querySelectorAll("#ffilter button").forEach(b=>b.onclick=()=>{
+  onlyAuto=b.dataset.f==="auto";
+  document.querySelectorAll("#ffilter button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  $("fgrid").classList.toggle("only-auto",onlyAuto);
+});
+function setLang(l){
+  lang=l; root.dataset.lang=l; root.lang=l;
+  document.querySelectorAll(".toggle button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.l===l));
+  try{localStorage.setItem("lp-hs-v4-lang",l)}catch(e){}
+  build();
+}
+document.querySelectorAll(".toggle button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+window.addEventListener("resize",()=>requestAnimationFrame(draw));
+$("fcta").onclick=toggleF; $("acta").onclick=toggleA;
+function setTheme(t){root.dataset.theme=t;try{localStorage.setItem("lp-hs-theme",t)}catch(e){};requestAnimationFrame(draw);}
+$("theme").onclick=()=>setTheme(root.dataset.theme==="dark"?"light":"dark");
+{let t=null;try{t=localStorage.getItem("lp-hs-theme")}catch(e){} setTheme(t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"));}
+$("ppc").oninput=e=>{ppc=+e.target.value;$("ppcv").textContent=ppc;calc();};
+if(document.fonts) document.fonts.ready.then(()=>draw());
+let saved=null; try{saved=localStorage.getItem("lp-hs-v4-lang")}catch(e){}
+sel="t1"; setLang(saved==="it"?"it":"tr");
+</script>
+</body>
+</html>

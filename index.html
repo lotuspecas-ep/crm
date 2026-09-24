@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>LP Group — HubSpot Pilot İtalya / Italia · v4</title>
+<title>LP Group — HubSpot Pilot · v6</title>
 <style>
 :root{
   --bg:#F5F5F7; --surface:#FFFFFF; --surface2:#F2F2F7; --ink:#1D1D1F; --muted:#6E6E73; --line:#D2D2D7; --line2:#E8E8ED; --inv:#FFFFFF;
@@ -248,18 +248,152 @@ tr.tot td{border-top:2px solid var(--ink);font-weight:600}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 @media print{.nav{display:none}.map.focus .cols .node{opacity:1!important}}
+/* v5 — lighter layout */
+.hero{display:block;padding:96px 0 24px;text-align:center}
+.hero h1{font-size:clamp(44px,7.2vw,88px);max-width:14ch;margin:0 auto}
+.hero .lede{margin:22px auto 0;max-width:40ch;font-size:21px}
+.btns{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 15px var(--body);padding:12px 22px;border-radius:999px}
+.btn.pri{background:var(--blue);color:#fff}
+.btn.sec{color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:64px}
+.stat{text-align:center;padding:28px 20px;border-radius:24px;background:var(--surface);box-shadow:var(--shadow)}
+.stat b{display:block;font:700 56px/1 var(--display);letter-spacing:-.04em;background:linear-gradient(135deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{display:block;margin-top:10px;font-size:15px;color:var(--muted)}
+.stat:nth-child(1){--c1:var(--blue);--c2:var(--indigo)} .stat:nth-child(2){--c1:var(--green);--c2:var(--teal)} .stat:nth-child(3){--c1:var(--purple);--c2:var(--pink)}
+section{padding:110px 0 0}
+.head{text-align:center;margin-bottom:34px}
+.eyebrow{display:inline-block;font:600 13px var(--body);color:var(--c);margin-bottom:10px}
+.head h2{font:700 clamp(34px,4.6vw,52px)/1.05 var(--display);letter-spacing:-.035em;margin:0}
+.head p{color:var(--muted);font-size:18px;margin:12px auto 0;max-width:52ch}
+.maptop{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 22px 0}
+.phases{display:flex;gap:6px;flex:1;min-width:520px}
+.phases .band{flex:4;border-radius:12px;padding:8px 12px}
+.phases .b2{flex:6} .phases .b3{flex:2}
+.legend{margin:0}
+.detail[hidden]{display:none!important}
+.center{display:flex;justify-content:center}
+.fchips{justify-content:center}
+.roi-body{display:block;border-top:1px solid var(--line2)}
+#assump{border-top:1px solid var(--line2)}
+.assgrid{display:grid;grid-template-columns:1fr 1.5fr;gap:28px}
+.assgrid .inputs{margin-top:0}
+.roi .ghost{margin:4px 0 0}
+/* cost */
+.cost{background:var(--surface);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+.cost-main{padding:34px 34px 26px;text-align:center}
+.cost-main .lbl{font-size:14px;color:var(--muted)}
+.cost-main .big{font:700 clamp(40px,6vw,64px)/1.05 var(--display);letter-spacing:-.04em;margin:6px 0 4px}
+.cost-main .alt{font-size:14px;color:var(--muted)}
+.stack{display:flex;height:14px;border-radius:8px;overflow:hidden;margin:26px auto 16px;max-width:640px;background:var(--surface2)}
+.stack i{display:block;height:100%;transition:width .4s}
+.items{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-size:14.5px}
+.items div{display:flex;align-items:center;gap:8px}
+.items i{width:10px;height:10px;border-radius:50%}
+.items b{font-variant-numeric:tabular-nums}
+.items span{color:var(--muted)}
+.cfg{border-top:1px solid var(--line2);padding:22px 34px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+.cfg label.t{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+.cfg input[type=range]{width:100%;accent-color:var(--blue)}
+.cfg output{font:700 20px var(--display);color:var(--blue)}
+.cfg .seg{width:fit-content}
+.cnote{font-size:12.5px;color:var(--muted);padding:0 34px 22px}
+/* role */
+.rolecard{border-radius:28px;padding:44px;color:#fff;background:linear-gradient(125deg,var(--indigo),var(--purple) 55%,var(--pink));display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
+.rolecard .q{font:700 clamp(26px,3.4vw,38px)/1.12 var(--display);letter-spacing:-.025em;margin:0 0 12px}
+.rolecard .who{opacity:.85;margin:0}
+.rolecard ul{list-style:none;margin:0;padding:0}
+.rolecard li{padding:12px 0;border-top:1px solid rgba(255,255,255,.25);font-weight:500}
+.rolecard li:first-child{border-top:0}
+.rolecard .eff{margin-top:14px;font-size:13.5px;opacity:.85}
+/* decide */
+.decide{padding:0;background:none;box-shadow:none}
+.decide .grid>div{padding:26px}
+/* accordion */
+.acc{max-width:880px;margin:0 auto}
+.acc details{background:var(--surface);border-radius:18px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden}
+.acc summary{list-style:none;cursor:pointer;padding:18px 22px;font:600 16px var(--display);display:flex;justify-content:space-between;align-items:center}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";font:400 22px var(--body);color:var(--blue);transition:transform .25s}
+.acc details[open] summary::after{transform:rotate(45deg)}
+.acc .in{padding:0 22px 20px}
+.acc .three{grid-template-columns:1fr}
+.acc .three>div{box-shadow:none;background:var(--surface2);padding:18px}
+.acc .tbl{box-shadow:none;background:var(--surface2)}
+.acc table{min-width:620px;font-size:14px}
+.acc .src{padding:0}
+footer{padding:60px 0 70px;text-align:center;color:var(--muted);font-size:13px}
+@media (max-width:900px){.stats{grid-template-columns:1fr}.cfg{grid-template-columns:1fr}.rolecard{grid-template-columns:1fr;padding:30px}.assgrid{grid-template-columns:1fr}.phases{min-width:0}.hero{padding-top:64px}}
+
+/* gate */
+body.locked{overflow:hidden}
+#gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--bg);overflow:hidden;padding:24px;transition:opacity .5s,transform .5s}
+#gate.out{opacity:0;transform:scale(1.03);pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.45}
+.b-a{width:420px;height:420px;background:var(--blue);top:-120px;left:-80px}
+.b-b{width:380px;height:380px;background:var(--pink);bottom:-140px;right:-60px;opacity:.35}
+.b-c{width:300px;height:300px;background:var(--green);bottom:10%;left:12%;opacity:.25}
+.gtop{position:absolute;top:calc(env(safe-area-inset-top,0px) + 18px);right:22px}
+.gcard{position:relative;text-align:center;max-width:440px;width:100%;padding:44px 34px 34px;border-radius:32px;background:color-mix(in srgb,var(--surface) 72%,transparent);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);box-shadow:0 30px 80px -30px rgba(0,0,0,.35),0 0 0 1px color-mix(in srgb,var(--ink) 6%,transparent)}
+.mark{width:96px;height:auto;display:block;margin:0 auto 12px}
+.gname{font:600 14px var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.gclaim{font:700 44px/1.05 var(--display);letter-spacing:-.035em;margin:18px 0 10px;background:linear-gradient(120deg,var(--ink) 30%,var(--indigo) 70%,var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+.gsub{margin:0 0 26px;color:var(--muted);font-size:15px}
+.gform{display:flex;gap:8px;background:var(--surface);border-radius:999px;padding:6px;box-shadow:0 0 0 1px var(--line2)}
+.gform input{flex:1;border:0;background:none;font:500 16px var(--body);color:var(--ink);padding:10px 16px;outline:none;min-width:0}
+.gform button{width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--blue),var(--indigo));display:grid;place-items:center}
+.gform button svg{width:20px;height:20px}
+.gform.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.gerr{min-height:20px;margin:12px 0 0;font-size:14px;color:var(--red)}
+.brand .mark{width:26px;margin:0}
+.brand::before{display:none}
 </style>
 </head>
-<body>
+<body class="locked">
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gClaim">
+  <div class="blob b-a"></div><div class="blob b-b"></div><div class="blob b-c"></div>
+  <div class="gtop"><div class="toggle" role="group" aria-label="Dil / Lingua"><button data-l="tr" aria-pressed="true">TR</button><button data-l="it" aria-pressed="false">IT</button></div></div>
+  <div class="gcard">
+    <svg class="mark" viewBox="-60 -62 120 76" aria-hidden="true"><defs>
+<linearGradient id="g1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5856D6"/><stop offset="1" stop-color="#AF52DE"/></linearGradient>
+<linearGradient id="g2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#007AFF"/><stop offset="1" stop-color="#5AC8FA"/></linearGradient>
+<linearGradient id="g3" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF2D55"/><stop offset="1" stop-color="#FF9500"/></linearGradient>
+<linearGradient id="g4" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#34C759"/><stop offset="1" stop-color="#30B0C7"/></linearGradient></defs>
+<g style="mix-blend-mode:multiply" opacity=".92">
+<path fill="url(#g4)" transform="rotate(-62)" d="M0 0C-11-14-11-34 0-46C11-34 11-14 0 0Z"/>
+<path fill="url(#g2)" transform="rotate(-31)" d="M0 0C-12-15-12-38 0-52C12-38 12-15 0 0Z"/>
+<path fill="url(#g3)" transform="rotate(62)" d="M0 0C-11-14-11-34 0-46C11-34 11-14 0 0Z"/>
+<path fill="url(#g1)" transform="rotate(31)" d="M0 0C-12-15-12-38 0-52C12-38 12-15 0 0Z"/>
+<path fill="url(#g1)" d="M0 0C-13-16-13-44 0-60C13-44 13-16 0 0Z"/></g></svg>
+    <div class="gname">Lotus Pecas</div>
+    <h1 id="gClaim" class="gclaim"><span class="tr">Tek grup.<br>Tek vizyon.</span><span class="it">Un gruppo.<br>Una visione.</span></h1>
+    <p class="gsub"><span class="tr">HubSpot Pilot · Gizli belge</span><span class="it">HubSpot Pilot · Documento riservato</span></p>
+    <form id="gform" class="gform" autocomplete="off">
+      <input id="gpw" type="password" aria-label="Password" placeholder="Password" autofocus>
+      <button type="submit" aria-label="Enter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+    <p class="gerr" id="gerr" aria-live="polite"></p>
+  </div>
+</div>
+
 <nav class="nav"><div class="wrap">
-  <div class="brand">Lotus Pecas <span>HubSpot · v4</span></div>
+  <div class="brand"><svg class="mark" viewBox="-60 -62 120 76" aria-hidden="true"><defs>
+<linearGradient id="n1" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5856D6"/><stop offset="1" stop-color="#AF52DE"/></linearGradient>
+<linearGradient id="n2" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#007AFF"/><stop offset="1" stop-color="#5AC8FA"/></linearGradient>
+<linearGradient id="n3" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF2D55"/><stop offset="1" stop-color="#FF9500"/></linearGradient>
+<linearGradient id="n4" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#34C759"/><stop offset="1" stop-color="#30B0C7"/></linearGradient></defs>
+<g style="mix-blend-mode:multiply" opacity=".92">
+<path fill="url(#n4)" transform="rotate(-62)" d="M0 0C-11-14-11-34 0-46C11-34 11-14 0 0Z"/>
+<path fill="url(#n2)" transform="rotate(-31)" d="M0 0C-12-15-12-38 0-52C12-38 12-15 0 0Z"/>
+<path fill="url(#n3)" transform="rotate(62)" d="M0 0C-11-14-11-34 0-46C11-34 11-14 0 0Z"/>
+<path fill="url(#n1)" transform="rotate(31)" d="M0 0C-12-15-12-38 0-52C12-38 12-15 0 0Z"/>
+<path fill="url(#n1)" d="M0 0C-13-16-13-44 0-60C13-44 13-16 0 0Z"/></g></svg>Lotus Pecas <span>HubSpot</span></div>
   <div class="links">
-    <a href="#harita"><span class="tr">Harita</span><span class="it">Mappa</span></a>
+    <a href="#yol"><span class="tr">Yol</span><span class="it">Percorso</span></a>
     <a href="#ozellikler"><span class="tr">Özellikler</span><span class="it">Funzionalità</span></a>
-    <a href="#kazanim"><span class="tr">Kazanım</span><span class="it">Ottimizzazione</span></a>
-    <a href="#yatirim"><span class="tr">Yatırım</span><span class="it">Investimento</span></a>
-    <a href="#riskler"><span class="tr">Riskler</span><span class="it">Rischi</span></a>
-    <a href="#sorumlu"><span class="tr">Sorumlu</span><span class="it">Responsabile</span></a>
+    <a href="#deger"><span class="tr">Değer</span><span class="it">Valore</span></a>
+    <a href="#maliyet"><span class="tr">Maliyet</span><span class="it">Costi</span></a>
     <a href="#karar"><span class="tr">Karar</span><span class="it">Decisione</span></a>
   </div>
   <div class="toggle" role="group" aria-label="Dil / Lingua">
@@ -270,78 +404,61 @@ tr.tot td{border-top:2px solid var(--ink);font-weight:600}
 
 <div class="wrap">
   <header class="hero">
-    <div>
-      <span class="ver tr">Ersan için teklif · 23/09/2026</span><span class="ver it">Proposta per Ersan · 23/09/2026</span>
-      <h1 class="tr">Tüm grubu tek bir araçta görmek. Önce İtalya'da kanıtlanır.</h1>
-      <h1 class="it">Un solo strumento per vedere tutto il gruppo. Provato prima in Italia.</h1>
-      <p class="lede tr">LP İtalya'da 12 aylık bir HubSpot pilotu: ana şirket tarafından finanse edilir ve diğer şirketlerin kopyalayabileceği bir şablon olarak kurulur. Sonunda ana şirket, her şirketin satışlarını, faturalarını, destek faaliyetlerini ve operasyonlarını tek ekranda görür.</p>
-      <p class="lede it">Un pilot HubSpot di 12 mesi in LP Italia, finanziato dalla casa madre, costruito come modello che le altre società copiano. Alla fine la casa madre vede vendite, fatture, assistenza e operatività di ogni società in un'unica schermata.</p>
+    <span class="ver tr">Ersan için teklif · Eylül 2026</span><span class="ver it">Proposta per Ersan · settembre 2026</span>
+    <h1 class="tr">Tüm grup, tek ekranda.</h1>
+    <h1 class="it">Tutto il gruppo, in un'unica schermata.</h1>
+    <p class="lede tr">Önce İtalya'da 12 aylık bir HubSpot pilotu. Sonra 20 ülkeye aynı kit.</p>
+    <p class="lede it">Prima un pilot HubSpot di 12 mesi in Italia. Poi lo stesso kit in 20 paesi.</p>
+    <div class="btns">
+      <a class="btn pri" href="#yol"><span class="tr">Yolu gör</span><span class="it">Guarda il percorso</span></a>
+      <a class="btn sec" href="#karar"><span class="tr">Karar</span><span class="it">La decisione</span> ›</a>
     </div>
-    <aside class="ask">
-      <h2><span class="tr">Talep ettiklerim</span><span class="it">Cosa chiedo</span></h2>
-      <ol class="tr">
-        <li><b>İtalya pilotunu onaylayın</b>: 12 ay, lisanslar ~$4,3k (liste fiyatı) + kurulum danışmanları €3–6k, hedef %50 daha az. Ana şirket bütçesinden.</li>
-        <li><b>Tek bir sorumlu atayın</b>: pilottan grup yaygınlaştırmasına kadar.</li>
-        <li><b>Aylık takip, 12. ayda karar</b>: ölçülen KPI'lara göre.</li>
-      </ol>
-      <ol class="it">
-        <li><b>Approvare il pilot Italia</b>: 12 mesi, licenze ~$4,3k (listino) + consulenti di setup €3–6k, obiettivo −50%. A carico della casa madre.</li>
-        <li><b>Nominare un solo responsabile</b>: dal pilot al rollout di gruppo.</li>
-        <li><b>Revisione mensile, decisione al mese 12</b>: su KPI misurati.</li>
-      </ol>
-    </aside>
+    <div class="stats">
+      <div class="stat"><b>12</b><span class="tr">ay pilot, ana şirket finansmanı</span><span class="it">mesi di pilot, finanziati dalla casa madre</span></div>
+      <div class="stat"><b id="heroH">≈460</b><span class="tr">İtalya'da yılda serbest kalan saat</span><span class="it">ore/anno liberate in Italia</span></div>
+      <div class="stat"><b>20</b><span class="tr">ülke, aynı kit</span><span class="it">paesi, stesso kit</span></div>
+    </div>
   </header>
-  <div class="facts">
-    <div><b class="tr">Zaten aktif</b><b class="it">Già attivo</b><span class="tr">AB veri merkezinde LP HubSpot portalı, ürün kataloğu yüklü, süreçler test edildi</span><span class="it">Portale HubSpot LP su data centre UE, catalogo caricato, processi testati</span></div>
-    <div><b>12 <span class="tr">ay</span><span class="it">mesi</span></b><span class="tr">Kurulum yazılımlar hazır olmadan başlar; karar rakamlarla verilir</span><span class="it">Il setup parte prima che i software siano pronti; si decide sui numeri</span></div>
-    <div><b>≤ 30</b><span class="tr">Tek bir ana şirketin bağlayıp raporlayabileceği şirket portalı</span><span class="it">Portali società che una casa madre può collegare e consolidare</span></div>
-  </div>
 
-  <!-- MAP -->
-  <section id="harita">
-    <div class="sech"><div>
-      <h2 class="sec tr">Pilot: bugünden 20 ülkeye</h2><h2 class="sec it">Il pilot, da oggi a 20 paesi</h2>
-      <p class="sub tr">Takvim, sonra harita. Her bloğa tıklayın; çizgiler neyin neyi beslediğini gösterir.</p>
-      <p class="sub it">Calendario, poi mappa. Clicca ogni blocco; le linee mostrano cosa alimenta cosa.</p>
-    </div></div>
-
-    <div class="tl"><div class="tl-in">
-      <div class="tl-cap tr">Pilot takvimi — Ekim'de onay varsayımıyla</div><div class="tl-cap it">Calendario del pilot — ipotesi di approvazione a ottobre</div>
-      <div class="months" id="months"></div>
-      <div class="bands">
-        <div class="band b1"><span class="tr">Kurulum</span><span class="it">Setup</span><small><span class="tr">Ay 1–4</span><span class="it">Mesi 1–4</span></small></div>
-        <div class="band b2"><span class="tr">Operasyon</span><span class="it">Operatività</span><small><span class="tr">Ay 5–10 · başlangıç ölçümü 5. ayda</span><span class="it">Mesi 5–10 · baseline al mese 5</span></small></div>
-        <div class="band b3"><span class="tr">Kanıt</span><span class="it">Prova</span><small><span class="tr">Ay 11–12 · karar</span><span class="it">Mesi 11–12 · decisione</span></small></div>
-      </div>
-    </div></div>
-
-    <div class="legend">
-      <span><i style="background:var(--green)"></i><span class="tr">Tamamlandı</span><span class="it">Fatto</span></span>
-      <span><i style="background:var(--orange)"></i><span class="tr">Bugünkü sorun</span><span class="it">Problema oggi</span></span>
-      <span><i style="background:linear-gradient(90deg,var(--blue),var(--indigo),var(--green))"></i><span class="tr">Pilot (12 ay)</span><span class="it">Pilot (12 mesi)</span></span>
-      <span><i style="border:1.5px dashed var(--orange);background:none"></i><span class="tr">Onaydan sonra</span><span class="it">Dopo il go</span></span>
+  <!-- 01 MAP -->
+  <section id="yol">
+    <div class="head" style="--c:var(--blue)">
+      <span class="eyebrow">01 · <span class="tr">Yol</span><span class="it">Percorso</span></span>
+      <h2 class="tr">Bugünden 20 ülkeye</h2><h2 class="it">Da oggi a 20 paesi</h2>
+      <p class="tr">Bir bloğa dokunun, ayrıntılar açılır.</p><p class="it">Tocca un blocco per aprire i dettagli.</p>
     </div>
     <div class="mapbox">
+      <div class="maptop">
+        <div class="phases">
+          <div class="band b1"><span class="tr">Kurulum</span><span class="it">Setup</span><small><span class="tr">Eki – Oca · ay 1–4</span><span class="it">Ott – Gen · mesi 1–4</span></small></div>
+          <div class="band b2"><span class="tr">Operasyon</span><span class="it">Operatività</span><small><span class="tr">Şub – Tem · ay 5–10</span><span class="it">Feb – Lug · mesi 5–10</span></small></div>
+          <div class="band b3"><span class="tr">Kanıt</span><span class="it">Prova</span><small><span class="tr">Ağu – Eyl</span><span class="it">Ago – Set</span></small></div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--green)"></i><span class="tr">Tamamlandı</span><span class="it">Fatto</span></span>
+          <span><i style="background:var(--orange)"></i><span class="tr">Bugünkü sorun</span><span class="it">Problema oggi</span></span>
+          <span><i style="border:1.5px dashed var(--orange);background:none"></i><span class="tr">Onaydan sonra</span><span class="it">Dopo il go</span></span>
+        </div>
+      </div>
       <div class="mapscroll"><div class="map" id="map">
         <svg class="edges" id="edges" aria-hidden="true"></svg>
         <div class="cols" id="cols"></div>
         <div class="owner" id="owner"></div>
       </div></div>
-      <div class="detail" id="detail" aria-live="polite"></div>
+      <div class="detail" id="detail" aria-live="polite" hidden></div>
     </div>
   </section>
 
-  <!-- FEATURES -->
+  <!-- 02 FEATURES -->
   <section id="ozellikler">
-    <div class="sech">
-      <div>
-        <h2 class="sec tr">Planlanan özellikler</h2><h2 class="sec it">Funzionalità previste</h2>
-        <p class="sub tr">Makro kategoriye göre. Otomatik = yapılandırıldıktan sonra manuel müdahale olmadan gerçekleşir.</p>
-        <p class="sub it">Per macro categoria. Automatico = avviene senza intervento manuale una volta configurato.</p>
-      </div>
+    <div class="head" style="--c:var(--green)">
+      <span class="eyebrow">02 · <span class="tr">Özellikler</span><span class="it">Funzionalità</span></span>
+      <h2 class="tr">Ne yapar</h2><h2 class="it">Cosa fa</h2>
+      <p class="tr">39 özellik, 28'i otomatik: faturalar, abonelikler, Shopify, yönetim yazılımı.</p>
+      <p class="it">39 funzionalità, 28 automatiche: fatture, abbonamenti, Shopify, gestionale.</p>
     </div>
     <div class="fchips" id="fchips"></div>
-    <button class="cta" id="fcta" aria-expanded="false" aria-controls="fwrap"><span id="fctaT"></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="center"><button class="cta" id="fcta" aria-expanded="false" aria-controls="fwrap"><span id="fctaT"></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     <div class="fwrap" id="fwrap" hidden>
       <div class="fbar">
         <span class="count" id="count"></span>
@@ -350,19 +467,20 @@ tr.tot td{border-top:2px solid var(--ink);font-weight:600}
           <button data-f="auto" aria-pressed="false"><span class="tr">Yalnızca otomatik</span><span class="it">Solo automatiche</span></button>
         </div>
       </div>
-    <div class="fgrid" id="fgrid"></div>
-    <p class="fnote tr">Entegrasyonlar (SDI, Shopify, LP yönetim yazılımı, abonelikler, 3CX) kurulumda danışman desteğiyle yapılır; yönetim yazılımı LP yazılımı hazır olduğunda bağlanır. Fatura ve abonelikler için gereken HubSpot paketi, HubSpot ile yapılacak görüşmede teyit edilecektir.</p>
-    <p class="fnote it">Le integrazioni (SDI, Shopify, gestionale LP, abbonamenti, 3CX) si realizzano in setup con il supporto dei consulenti; il gestionale si collega quando il software LP è pronto. Il tier HubSpot necessario per fatture e abbonamenti va confermato in call con HubSpot.</p>
+      <div class="fgrid" id="fgrid"></div>
+      <p class="fnote tr">Entegrasyonlar (SDI, Shopify, LP yönetim yazılımı, abonelikler, 3CX) kurulumda danışman desteğiyle yapılır; yönetim yazılımı LP yazılımı hazır olduğunda bağlanır.</p>
+      <p class="fnote it">Le integrazioni (SDI, Shopify, gestionale LP, abbonamenti, 3CX) si realizzano in setup con il supporto dei consulenti; il gestionale si collega quando il software LP è pronto.</p>
     </div>
   </section>
 
-  <!-- ROI -->
-  <section id="kazanim">
-    <div class="sech"><div>
-      <h2 class="sec tr">Tahmini kazanım: zaman ve para</h2><h2 class="sec it">Ottimizzazione stimata: tempo e denaro</h2>
-      <p class="sub tr">Önce İtalya, sonra grup. Her varsayım görünür ve değiştirilebilir; gerçek değerler 5. aydaki başlangıç ölçümüyle doğrulanır.</p>
-      <p class="sub it">Prima l'Italia, poi il gruppo. Ogni ipotesi è visibile e modificabile; i valori reali si validano con la baseline del mese 5.</p>
-    </div></div>
+  <!-- 03 VALUE -->
+  <section id="deger">
+    <div class="head" style="--c:var(--purple)">
+      <span class="eyebrow">03 · <span class="tr">Değer</span><span class="it">Valore</span></span>
+      <h2 class="tr">Ne kazandırır</h2><h2 class="it">Quanto fa risparmiare</h2>
+      <p class="tr">Önce İtalya, sonra grup. Tahmin, 5. ayda gerçek verilerle doğrulanır.</p>
+      <p class="it">Prima l'Italia, poi il gruppo. Stima validata con dati reali al mese 5.</p>
+    </div>
     <div class="roi">
       <div class="roi-top">
         <div class="seg" role="group" id="tabs">
@@ -375,154 +493,135 @@ tr.tot td{border-top:2px solid var(--ink);font-weight:600}
         </div>
       </div>
       <div class="kpis" id="kpis"></div>
-
-      <div id="pane-it" class="roi-body solo">
+      <div id="pane-it" class="roi-body">
         <div class="roi-col">
-          <h3 class="tr">Kazanım nereden gelir</h3><h3 class="it">Da dove arriva il risparmio</h3>
           <div class="bars" id="bucketBars"></div>
-          <div class="cash" id="cash"></div>
-          <div class="inputs" id="inputs"></div>
           <button class="ghost" id="acta" aria-expanded="false" aria-controls="assump"><span id="actaT"></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
-        <div class="roi-col" id="assump" style="overflow-x:auto" hidden>
-          <h3 class="tr">Faaliyet bazında varsayımlar</h3><h3 class="it">Ipotesi per attività</h3>
-          <table class="acts"><thead><tr>
-            <th><span class="tr">Faaliyet</span><span class="it">Attività</span></th>
-            <th><span class="tr">Hacim/ay</span><span class="it">Volume/mese</span></th>
-            <th><span class="tr">Önce (dk)</span><span class="it">Prima (min)</span></th>
-            <th><span class="tr">Sonra (dk)</span><span class="it">Dopo (min)</span></th>
-            <th><span class="tr">Saat/ay</span><span class="it">Ore/mese</span></th>
-          </tr></thead><tbody id="acts"></tbody></table>
+        <div class="roi-col" id="assump" hidden>
+          <div class="assgrid">
+            <div><div class="inputs" id="inputs"></div><div class="cash" id="cash"></div></div>
+            <div style="overflow-x:auto">
+              <table class="acts"><thead><tr>
+                <th><span class="tr">Faaliyet</span><span class="it">Attività</span></th>
+                <th><span class="tr">Hacim/ay</span><span class="it">Volume/mese</span></th>
+                <th><span class="tr">Önce (dk)</span><span class="it">Prima (min)</span></th>
+                <th><span class="tr">Sonra (dk)</span><span class="it">Dopo (min)</span></th>
+                <th><span class="tr">Saat/ay</span><span class="it">Ore/mese</span></th>
+              </tr></thead><tbody id="acts"></tbody></table>
+            </div>
+          </div>
         </div>
       </div>
-
       <div id="pane-grp" class="roi-col" hidden>
         <div class="slider">
           <label for="ppc"><span class="tr">Ülke başına ortalama kişi</span><span class="it">Persone medie per paese</span></label>
           <input type="range" id="ppc" min="1" max="15" value="3"><output id="ppcv">3</output>
-          <span class="count tr" style="display:inline">3 = İtalya ile aynı, temkinli: yerleşik şirketler genellikle daha büyüktür.</span>
-          <span class="count it" style="display:inline">3 = come l'Italia, prudente: le società già avviate sono in genere più grandi.</span>
         </div>
         <div class="bars gbars" id="gbars"></div>
       </div>
-
       <div class="foot"><span class="tr">Saatlik maliyet: Eurostat · 1 tam zamanlı eşdeğer = yılda 1.700 saat</span><span class="it">Costo orario: Eurostat · 1 equivalente tempo pieno = 1.700 ore/anno</span></div>
     </div>
   </section>
 
-  <!-- WHY -->
-  <section>
-    <div class="three">
-      <div><h3 class="tr">Neden önce İtalya</h3><h3 class="it">Perché prima l'Italia</h3>
-        <p class="tr">İtalyan şirketi şimdi başlıyor: taşınacak eski bir CRM yok, bozulacak alışkanlık yok. Portal zaten var ve temel akışlar (lead, sözleşme, fatura, talep, telefon) gerçek LP ürünleriyle test edildi.</p>
-        <p class="it">La società italiana sta partendo ora: nessun CRM storico da migrare, nessuna abitudine da smontare. Il portale esiste e i flussi chiave (lead, contratti, fatture, ticket, telefono) sono stati testati su prodotti LP reali.</p></div>
-      <div><h3 class="tr">Neden 12 ay</h3><h3 class="it">Perché 12 mesi</h3>
-        <p class="tr">LP yazılımları henüz hazır değil ve yazılımsız ölçüm yanıltıcı olur. İlk dört ay kurulum, sonraki altı ay gerçek operasyon, son iki ay karşılaştırma. 12 ay, HubSpot'un yıllık sözleşmesiyle de örtüşür.</p>
-        <p class="it">I software LP non sono ancora pronti e misurare senza di loro darebbe dati falsati. Quattro mesi di setup, sei di operatività reale, due di confronto. 12 mesi coincidono anche con il contratto annuale HubSpot.</p></div>
-      <div><h3 class="tr">Neden gruba ölçeklenir</h3><h3 class="it">Perché scala sul gruppo</h3>
-        <p class="tr">İtalya bir kit olarak kurulur: aynı veri modeli, aynı aşamalar, aynı paneller. Her şirket kendi portalına sahip olur ve ana şirket bunları bağlar: bir Enterprise hesabı, Professional veya üzeri 29'a kadar şirket hesabını bağlayabilir.</p>
-        <p class="it">L'Italia viene costruita come kit: stesso modello dati, stesse fasi, stesse dashboard. Ogni società ha il proprio portale e la casa madre li collega: un account Enterprise può collegare fino a 29 account società su Professional o superiore.</p></div>
+  <!-- 04 COST -->
+  <section id="maliyet">
+    <div class="head" style="--c:var(--orange)">
+      <span class="eyebrow">04 · <span class="tr">Maliyet</span><span class="it">Costi</span></span>
+      <h2 class="tr">Pilotun maliyeti</h2><h2 class="it">Quanto costa il pilot</h2>
+      <p class="tr">Yaklaşık aralıklar, %30 pay dahil. Kesin rakamlar sağlayıcılar seçildikten sonra gelir.</p>
+      <p class="it">Range indicativi, margine del 30% incluso. I costi esatti arrivano dopo la scelta dei fornitori.</p>
+    </div>
+    <div class="cost">
+      <div class="cost-main">
+        <div class="lbl"><span class="tr">Pilot bütçesi · 12 ay</span><span class="it">Budget del pilot · 12 mesi</span></div>
+        <div class="big" id="cTotal"></div>
+        <div class="alt" id="cAlt"></div>
+        <div class="stack" id="cStack"></div>
+        <div class="items" id="cItems"></div>
+        <button class="ghost" id="cBtn" aria-expanded="false" aria-controls="cfg" style="margin-top:22px"><span id="cBtnT"></span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div id="cfg" hidden>
+        <div class="cfg">
+          <div><label class="t"><span class="tr">HubSpot paketi</span><span class="it">Piano HubSpot</span></label>
+            <div class="seg" id="cPlan"><button data-p="A" aria-pressed="true"><span class="tr">A · Yalın</span><span class="it">A · Snello</span></button><button data-p="B" aria-pressed="false"><span class="tr">B · Tam</span><span class="it">B · Completo</span></button></div></div>
+          <div id="cSeatsBox"><label class="t" for="cSeats"><span class="tr">Ücretli HubSpot lisansı</span><span class="it">Seat HubSpot a pagamento</span></label>
+            <div style="display:flex;gap:12px;align-items:center"><input type="range" id="cSeats" min="2" max="8" value="4"><output id="cSeatsV">4</output></div></div>
+          <div><label class="t"><span class="tr">Kurulum danışmanları</span><span class="it">Consulenti di setup</span></label>
+            <div class="seg" id="cOpt"><button data-o="1" aria-pressed="true"><span class="tr">Optimize (−%50)</span><span class="it">Ottimizzati (−50%)</span></button><button data-o="0" aria-pressed="false"><span class="tr">Standart</span><span class="it">Standard</span></button></div></div>
+        </div>
+        <div class="cnote tr">HubSpot liste fiyatları USD'dir, €'ya yaklaşık çevrilmiştir (1 $ ≈ 0,90 €). Olası tek seferlik onboarding ücreti hariç.</div>
+        <div class="cnote it">Prezzi HubSpot di listino in USD, convertiti in € in modo indicativo (1 $ ≈ 0,90 €). Esclusa eventuale fee di onboarding una tantum.</div>
+      </div>
     </div>
   </section>
 
-  <!-- INVESTMENT -->
-  <section id="yatirim">
-    <div class="sech"><div>
-      <h2 class="sec tr">Pilot yatırımı</h2><h2 class="sec it">Investimento del pilot</h2>
-      <p class="sub tr">HubSpot liste fiyatları (USD), pazarlık öncesi. Yalnızca 12 aylık pilot; sonraki aşamalar ayrı bir karardır.</p>
-      <p class="sub it">Prezzi di listino HubSpot (USD), prima della trattativa. Solo il pilot di 12 mesi; le fasi successive sono una decisione separata.</p>
-    </div></div>
-    <div class="tbl"><table>
-      <thead><tr><th><span class="tr">Kalem</span><span class="it">Voce</span></th><th><span class="tr">İçerik</span><span class="it">Cosa include</span></th><th><span class="tr">Aylık</span><span class="it">Mensile</span></th><th><span class="tr">12 ay</span><span class="it">12 mesi</span></th></tr></thead>
-      <tbody>
-        <tr class="rec"><td><b class="tr">A · Yalın pilot</b><b class="it">A · Pilot snello</b><span class="tag tr">önerilen</span><span class="tag it">consigliato</span></td>
-          <td class="tr">Sales Hub Pro ×2 + Service Hub Pro ×2 lisans: iş akışları, satış hatları, talepler, özel raporlar. Yönetim ücretsiz salt-okunur lisanslarla. Pazarlama, kampanyalar başlayana kadar ücretsiz formlarla.</td>
-          <td class="it">Sales Hub Pro ×2 + Service Hub Pro ×2 seat: workflow, pipeline, ticket, report personalizzati. Direzione su seat view-only gratuiti. Marketing su form gratuiti finché non partono le campagne.</td>
-          <td class="num">$360</td><td class="num">$4.320</td></tr>
-        <tr><td><b class="tr">B · Tam platform</b><b class="it">B · Piattaforma completa</b></td>
-          <td class="tr">Customer Platform Professional, 5 lisans: pazarlama otomasyonu, Content ve Data hub eklenir.</td>
-          <td class="it">Customer Platform Professional, 5 seat: aggiunge automazione marketing, Content e Data hub.</td>
-          <td class="num">$1.300</td><td class="num">$15.600</td></tr>
-        <tr><td><b class="tr">Kurulum danışmanları</b><b class="it">Consulenti di setup</b></td>
-          <td class="tr">Entegrasyonlar için dış destek: SDI faturalama, abonelikler, Shopify, LP yönetim yazılımı, 3CX. Tüm pilot için bütçe; Edoardo'nun şirket içi optimizasyonuyla hedef %50 daha az.</td>
-          <td class="it">Supporto esterno per le integrazioni: fatturazione SDI, abbonamenti, Shopify, gestionale LP, 3CX. Budget per l'intero pilot; obiettivo −50% con l'ottimizzazione interna di Edoardo.</td>
-          <td class="num">—</td><td class="num">€3.000–6.000<small><span class="tr">hedef €1.500–3.000</span><span class="it">obiettivo €1.500–3.000</span></small></td></tr>
-        <tr class="tot"><td><span class="tr">Toplam pilot (A)</span><span class="it">Totale pilot (A)</span></td>
-          <td class="tr">Lisanslar + danışmanlar, 12 ay</td><td class="it">Licenze + consulenti, 12 mesi</td>
-          <td class="num">—</td><td class="num">$4.320 + €1.500–3.000<small><span class="tr">en fazla €6.000 danışman</span><span class="it">massimo €6.000 consulenti</span></small></td></tr>
-      </tbody>
-    </table></div>
-    <p class="note tr">Dahil değil, teklif alınacak: olası tek seferlik HubSpot onboarding ücreti. A'daki lisans sayısı mevcut İtalya ekibine göre varsayılmıştır: teyit edilecek. 12 aylık pilot yıllık sözleşmeyle örtüşür: pilotun ötesinde bağlayıcılık yok.</p>
-    <p class="note it">Escluso, da quotare: eventuale fee di onboarding HubSpot una tantum. Il numero di seat in A assume il team Italia attuale: da confermare. Il pilot di 12 mesi coincide con il contratto annuale: nessun vincolo oltre il pilot.</p>
-  </section>
-
-  <!-- RISKS -->
-  <section id="riskler">
-    <div class="sech"><div><h2 class="sec tr">Riskler ve pilotun yanıtı</h2><h2 class="sec it">Rischi e come il pilot li gestisce</h2></div></div>
-    <div class="tbl"><table>
-      <thead><tr><th><span class="tr">Risk</span><span class="it">Rischio</span></th><th><span class="tr">Etki</span><span class="it">Impatto</span></th><th><span class="tr">Önlem</span><span class="it">Mitigazione</span></th></tr></thead>
-      <tbody id="risks"></tbody>
-    </table></div>
-  </section>
-
-  <!-- ALTERNATIVES -->
-  <section>
-    <div class="sech"><div><h2 class="sec tr">Değerlendirilen alternatifler</h2><h2 class="sec it">Alternative valutate</h2></div></div>
-    <div class="tbl"><table>
-      <thead><tr><th><span class="tr">Seçenek</span><span class="it">Opzione</span></th><th><span class="tr">Neden hayır</span><span class="it">Perché no</span></th></tr></thead>
-      <tbody id="alts"></tbody>
-    </table></div>
-  </section>
-
-  <!-- ROLE -->
+  <!-- 05 ROLE -->
   <section id="sorumlu">
-    <div class="role">
-      <blockquote class="tr">Bir şablon ancak bir sahibi varsa ölçeklenir. Sahibi olmayı öneriyorum: grup için Lead Innovation &amp; Digital Ops.</blockquote>
-      <blockquote class="it">Un modello scala solo se qualcuno ne è responsabile. Propongo di esserlo: Lead Innovation &amp; Digital Ops di gruppo.</blockquote>
+    <div class="rolecard">
       <div>
-        <ul class="tr">
-          <li>Başlangıç noktasını kurdu: portal, katalog, süreç testleri, temiz veri kaynağı.</li>
-          <li>İtalya pilotunu yönetir ve KPI'ları her ay Ersan'a raporlar.</li>
-          <li>Danışman maliyetini optimize eder: hedef %50 daha az.</li>
-          <li>Ülke kitini paketler ve her şirketin katılımını yönetir.</li>
-          <li>Tek standardı korur: tanımlar, erişim kuralları, paneller, otomasyonlar.</li>
-        </ul>
-        <ul class="it">
-          <li>Ha costruito il punto di partenza: portale, catalogo, test di processo, fonte dati pulita.</li>
-          <li>Gestisce il pilot Italia e riporta i KPI a Ersan ogni mese.</li>
-          <li>Ottimizza il costo dei consulenti: obiettivo −50%.</li>
-          <li>Impacchetta il kit paese e gestisce l'onboarding di ogni società.</li>
-          <li>Mantiene uno standard unico: definizioni, regole di accesso, dashboard, automazioni.</li>
-        </ul>
-        <p class="effort tr">Bu, mevcut iş akışlarına (ödemeler, POS, lisanslar) ek bir sorumluluktur: ayrılmış zaman ve emek gerektirir. Pilot aynı zamanda rolün testidir: aynı KPI'lar, aynı 12. ay değerlendirmesi.</p>
-        <p class="effort it">È un ruolo aggiuntivo rispetto ai workstream attuali (pagamenti, POS, licenze): richiede tempo ed effort dedicati. Il pilot è anche il test del ruolo: stessi KPI, stessa revisione al mese 12.</p>
+        <p class="q tr">Bir şablon ancak bir sahibi varsa ölçeklenir.</p>
+        <p class="q it">Un modello scala solo se qualcuno ne è responsabile.</p>
+        <p class="who tr">Önerilen: Edoardo Parini, grup Lead Innovation &amp; Digital Ops.</p>
+        <p class="who it">Proposta: Edoardo Parini, Lead Innovation &amp; Digital Ops di gruppo.</p>
+      </div>
+      <div>
+        <ul class="tr"><li>Pilotu ve KPI'ları yönetir, her ay Ersan'a raporlar</li><li>Danışman maliyetini yarıya indirir</li><li>Kiti 20 ülkeye taşır</li></ul>
+        <ul class="it"><li>Guida pilot e KPI, report mensile a Ersan</li><li>Dimezza il costo dei consulenti</li><li>Porta il kit nei 20 paesi</li></ul>
+        <p class="eff tr">Mevcut görevlere (ödemeler, POS, lisanslar) ek bir roldür; ayrılmış zaman gerektirir.</p>
+        <p class="eff it">Ruolo aggiuntivo ai workstream attuali (pagamenti, POS, licenze): richiede tempo dedicato.</p>
       </div>
     </div>
   </section>
 
+  <!-- 06 DECISION -->
   <section id="karar">
-    <div class="decide">
+    <div class="head" style="--c:var(--green)">
+      <span class="eyebrow">05 · <span class="tr">Karar</span><span class="it">Decisione</span></span>
       <h2 class="tr">Gereken karar</h2><h2 class="it">Decisione richiesta</h2>
-      <div class="grid">
-        <div><span class="n">1</span><b class="tr">Pilot ve bütçe</b><b class="it">Pilot e budget</b><p class="tr">Seçenek A + kurulum danışmanları, ana şirket finansmanı. Kurulum onaydan hemen sonra başlar.</p><p class="it">Opzione A + consulenti di setup, finanziati dalla casa madre. Il setup parte subito dopo l'approvazione.</p></div>
-        <div><span class="n">2</span><b class="tr">Sorumlu</b><b class="it">Responsabile</b><p class="tr">İtalya'dan gruba kadar sorumlu tek bir isim.</p><p class="it">Un nome, responsabile dall'Italia al gruppo.</p></div>
-        <div><span class="n">3</span><b class="tr">Aylık takip, 12. ayda karar</b><b class="it">Revisione mensile, decisione al mese 12</b><p class="tr">Haritadaki KPI'lara göre devam, uzat veya dur.</p><p class="it">Go, estendere o fermare, sui KPI della mappa.</p></div>
-      </div>
     </div>
+    <div class="decide"><div class="grid">
+      <div><span class="n">1</span><b class="tr">Pilotu onaylayın</b><b class="it">Approvare il pilot</b><p><span class="tr">Ana şirket finansmanı: </span><span class="it">Finanziato dalla casa madre: </span><span id="decCost"></span></p></div>
+      <div><span class="n">2</span><b class="tr">Sorumluyu atayın</b><b class="it">Nominare il responsabile</b><p class="tr">İtalya'dan gruba tek isim.</p><p class="it">Un solo nome, dall'Italia al gruppo.</p></div>
+      <div><span class="n">3</span><b class="tr">12. ayda karar</b><b class="it">Decidere al mese 12</b><p class="tr">Aylık takip; devam, uzat veya dur.</p><p class="it">Revisione mensile; go, estendere o stop.</p></div>
+    </div></div>
   </section>
 
-  <div class="src">
-    <b class="tr">Kaynaklar (23/09/2026 tarihinde kontrol edildi)</b><b class="it">Fonti (consultate il 23/09/2026)</b>
-    <ol>
-      <li>HubSpot KB, multi-account management: knowledge.hubspot.com/account-management/set-up-multi-account-management</li>
-      <li>Resonate, HubSpot pricing 2026 (05/2026): resonatehq.com/hubspot-pricing</li>
-      <li>EngageBay, HubSpot pricing (08/2026): engagebay.com/blog/hubspot-pricing</li>
-      <li>Vedain, Sales Hub per-seat pricing 2026: vedain.com/blog/how-much-does-hubspot-cost-per-user-2026-pricing-guide</li>
-      <li>Eurostat, hourly labour costs 2025 (31/03/2026): ec.europa.eu/eurostat/statistics-explained/index.php?title=Hourly_labour_costs — Italy €32.0 (AgenSIR, 31/03/2026), Spain €26.4 (Diari de Tarragona), EU €34.9</li>
-      <li>Eurostat 2024 via Euronews (19/04/2025): France €43.7, Germany €43.4</li>
-      <li>LP HubSpot portal (23/09/2026), internal tests and weekly reports, 09/2026.</li>
-    </ol>
-  </div>
+  <!-- DEEP DIVE -->
+  <section id="detay">
+    <div class="head" style="--c:var(--gray)">
+      <span class="eyebrow"><span class="tr">Ayrıntılar</span><span class="it">Approfondimenti</span></span>
+    </div>
+    <div class="acc">
+      <details><summary><span class="tr">Neden İtalya, neden 12 ay, neden ölçeklenir</span><span class="it">Perché l'Italia, perché 12 mesi, perché scala</span></summary><div class="in">
+        <div class="three">
+          <div><h3 class="tr">Neden önce İtalya</h3><h3 class="it">Perché prima l'Italia</h3>
+            <p class="tr">İtalyan şirketi şimdi başlıyor: taşınacak eski bir CRM yok. Portal zaten var ve temel akışlar gerçek LP ürünleriyle test edildi.</p>
+            <p class="it">La società italiana sta partendo ora: nessun CRM storico da migrare. Il portale esiste e i flussi chiave sono stati testati su prodotti LP reali.</p></div>
+          <div><h3 class="tr">Neden 12 ay</h3><h3 class="it">Perché 12 mesi</h3>
+            <p class="tr">LP yazılımları henüz hazır değil. Dört ay kurulum, altı ay operasyon, iki ay karşılaştırma. HubSpot'un yıllık sözleşmesiyle örtüşür.</p>
+            <p class="it">I software LP non sono ancora pronti. Quattro mesi di setup, sei di operatività, due di confronto. Coincide con il contratto annuale HubSpot.</p></div>
+          <div><h3 class="tr">Neden gruba ölçeklenir</h3><h3 class="it">Perché scala sul gruppo</h3>
+            <p class="tr">Aynı veri modeli, aşamalar ve paneller. Her şirketin kendi portalı olur; ana şirket 29'a kadar portalı tek hesapta bağlar.</p>
+            <p class="it">Stesso modello dati, fasi e dashboard. Ogni società ha il proprio portale; la casa madre ne collega fino a 29 in un unico account.</p></div>
+        </div></div></details>
+      <details><summary><span class="tr">Riskler ve önlemler</span><span class="it">Rischi e mitigazioni</span></summary><div class="in"><div class="tbl"><table>
+        <thead><tr><th><span class="tr">Risk</span><span class="it">Rischio</span></th><th><span class="tr">Etki</span><span class="it">Impatto</span></th><th><span class="tr">Önlem</span><span class="it">Mitigazione</span></th></tr></thead>
+        <tbody id="risks"></tbody></table></div></div></details>
+      <details><summary><span class="tr">Değerlendirilen alternatifler</span><span class="it">Alternative valutate</span></summary><div class="in"><div class="tbl"><table>
+        <thead><tr><th><span class="tr">Seçenek</span><span class="it">Opzione</span></th><th><span class="tr">Neden hayır</span><span class="it">Perché no</span></th></tr></thead>
+        <tbody id="alts"></tbody></table></div></div></details>
+      <details><summary><span class="tr">Kaynaklar</span><span class="it">Fonti</span></summary><div class="in src"><ol>
+        <li>HubSpot KB, multi-account management: knowledge.hubspot.com/account-management/set-up-multi-account-management</li>
+        <li>Resonate, HubSpot pricing 2026 (05/2026): resonatehq.com/hubspot-pricing</li>
+        <li>EngageBay, HubSpot pricing (08/2026): engagebay.com/blog/hubspot-pricing</li>
+        <li>Vedain, Sales Hub per-seat pricing 2026: vedain.com/blog/how-much-does-hubspot-cost-per-user-2026-pricing-guide</li>
+        <li>Eurostat, hourly labour costs 2025 (31/03/2026): Italy €32.0, Spain €26.4, EU €34.9; 2024: France €43.7, Germany €43.4</li>
+        <li>LP HubSpot portal (23/09/2026), internal tests and weekly reports, 09/2026.</li>
+      </ol></div></details>
+    </div>
+  </section>
+  <footer>Lotus Pecas · HubSpot Pilot · v6</footer>
 </div>
 
 <script>
@@ -672,7 +771,7 @@ const ACT=[
  {b:"dig",v:"ppl",pre:30,post:5,tr:["Sistemler arası mükerrer veri girişi","kişi başına, haftalık"],it:["Doppio inserimento dati tra sistemi","a persona, a settimana"]}
 ];
 const BK={pay:{tr:"Ödemeler & faturalama",it:"Pagamenti & fatturazione"},bo:{tr:"Back office",it:"Back office"},dig:{tr:"Dijitalleşme",it:"Digitalizzazione"}};
-const INP=[["people","Süreçlerdeki kişi","Persone nei processi"],["newC","Yeni müşteri/ay","Nuovi clienti/mese"],["ren","Lisans yenileme/ay","Rinnovi licenze/mese"],["inv","Fatura/ay","Fatture/mese"],["tix","Talep/ay","Ticket/mese"],["late","Geciken fatura %","Fatture in ritardo %"],["cost","Saatlik işgücü maliyeti (€)","Costo orario del lavoro (€)"],["pilot","Pilot maliyeti (€)","Costo del pilot (€)"],["rev","Aylık faturalanan tutar (€, isteğe bağlı)","Fatturato mensile (€, facoltativo)"],["dso","Daha hızlı tahsilat (gün)","Incasso anticipato (giorni)"]];
+const INP=[["people","Süreçlerdeki kişi","Persone nei processi"],["newC","Yeni müşteri/ay","Nuovi clienti/mese"],["ren","Lisans yenileme/ay","Rinnovi licenze/mese"],["inv","Fatura/ay","Fatture/mese"],["tix","Talep/ay","Ticket/mese"],["late","Geciken fatura %","Fatture in ritardo %"],["cost","Saatlik işgücü maliyeti (€)","Costo orario del lavoro (€)"],["rev","Aylık faturalanan tutar (€, isteğe bağlı)","Fatturato mensile (€, facoltativo)"],["dso","Daha hızlı tahsilat (gün)","Incasso anticipato (giorni)"]];
 const CTRY=[["İtalya","Italia",32.0,"2025"],["İspanya","Spagna",26.4,"2025"],["Fransa","Francia",43.7,"2024"],["Almanya","Germania",43.4,"2024"]];
 const FTEH=1700; const BC={pay:"blue",bo:"orange",dig:"purple"}; const GC=["green","orange","blue","indigo","teal"]; let scen=1, tab="it", ppc=3;
 const fmt=(n,d=0)=>n.toLocaleString(lang==="tr"?"tr-TR":"it-IT",{maximumFractionDigits:d,minimumFractionDigits:d});
@@ -695,6 +794,7 @@ function calc(){
   ACT.forEach((a,i)=>{$("acts").querySelector(`[data-vol="${i}"]`).textContent=a.v==="ppl"?`${fmt(ST.people)}×4,3`:fmt(vol(a),0);$("acts").querySelector(`[data-h="${i}"]`).textContent=fmt(hm[i]*scen,1);});
   const itM=hm.reduce((x,y)=>x+y,0)*scen, itY=itM*12, itE=itY*ST.cost, mE=itM*ST.cost;
   const pb=mE>0?ST.pilot/mE:Infinity;
+  $("heroH").textContent="≈"+fmt(Math.round(hm.reduce((x,y)=>x+y,0)*12/10)*10);
   const bk={pay:0,bo:0,dig:0}; ACT.forEach((a,i)=>bk[a.b]+=hm[i]*scen*12);
   const mx=Math.max(...Object.values(bk),1);
   $("bucketBars").innerHTML=Object.entries(bk).map(([b,h])=>`<div class="row" style="--c:var(--${BC[b]})"><span>${BK[b][lang]}</span><div class="track"><div class="fill" style="width:${h/mx*100}%"></div></div><span class="v">${fmt(h)} ${k?"h/anno":"sa/yıl"}</span></div>`).join("");
@@ -723,7 +823,6 @@ let lang="tr", sel=null, onlyAuto=false;
 const $=id=>document.getElementById(id), root=document.documentElement, map=$("map"), svg=$("edges"), det=$("detail");
 const cls={done:"done",problem:"problem",plan:"plan",future:"",owner:""};
 function build(){
-  $("months").innerHTML=MONTHS[lang].map((m,i)=>`<div class="m">${m}</div>`).join("");
   const cols=$("cols"); cols.innerHTML="";
   COLS[lang].forEach((h,i)=>{
     const c=document.createElement("div"); c.style.setProperty("--c",`var(--p${i})`);
@@ -732,7 +831,7 @@ function build(){
     cols.appendChild(c);
   });
   $("owner").innerHTML=""; $("owner").appendChild(nodeEl("own",N.own));
-  buildFeatures(); buildTables(); buildROI(); setActa();
+  buildFeatures(); buildTables(); costCalc(); buildROI(); setActa();
   requestAnimationFrame(draw); show(sel);
 }
 function nodeEl(id,n){
@@ -764,7 +863,7 @@ function draw(){
 }
 function show(id){
   const l=L[lang];
-  if(!id){det.innerHTML=`<p class="hint">${l.hint}</p>`;return;}
+  if(!id){det.hidden=true;return;} det.hidden=false;
   const n=N[id],t=n[lang];
   det.style.setProperty("--c",n.c>=0?`var(--p${n.c})`:"var(--purple)");
   const phase=n.c>=0?COLS[lang][n.c][0]+" · "+COLS[lang][n.c][1]:l.owner;
@@ -774,6 +873,24 @@ function show(id){
    ${chips?`<dt>${l.con}</dt><dd class="chips">${chips}</dd>`:""}</dl>`;
   det.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{sel=b.dataset.go;refresh();});
 }
+const CS={plan:"A",seats:4,opt:1}, FX=0.9; let cOpen=false;
+function costCalc(){
+  const tr=lang==="tr", K=v=>"€"+fmt(v/1000,1)+"k";
+  const hs=CS.plan==="A"?CS.seats*90*12*FX:1300*12*FX, hsR=[hs,hs*1.3];
+  const coR=CS.opt?[1500,3900]:[3000,7800], sh=59*12;
+  const lo=hsR[0]+coR[0]+sh, hi=hsR[1]+coR[1]+sh, aLo=hsR[0]+3000+sh, aHi=hsR[1]+7800+sh;
+  ST.pilot=(lo+hi)/2;
+  $("cTotal").textContent=`${K(lo)} – ${K(hi)}`;
+  $("cAlt").textContent=CS.opt?(tr?`Danışman optimizasyonu olmadan: ${K(aLo)} – ${K(aHi)}`:`Senza ottimizzazione dei consulenti: ${K(aLo)} – ${K(aHi)}`):(tr?"Standart danışman maliyeti":"Costo consulenti standard");
+  const it=[["blue",tr?"HubSpot lisansları":"Licenze HubSpot",hsR],["purple",tr?"Kurulum danışmanları":"Consulenti di setup",coR],["green",tr?"Shopify · €59/ay":"Shopify · €59/mese",[sh,sh]]];
+  const tot=it.reduce((x,i)=>x+(i[2][0]+i[2][1])/2,0);
+  $("cStack").innerHTML=it.map(i=>`<i style="width:${(i[2][0]+i[2][1])/2/tot*100}%;background:var(--${i[0]})"></i>`).join("");
+  $("cItems").innerHTML=it.map(i=>`<div><i style="background:var(--${i[0]})"></i><span>${i[1]}</span><b>${i[2][0]===i[2][1]?"€"+fmt(i[2][0]):K(i[2][0])+"–"+K(i[2][1]).slice(1)}</b></div>`).join("");
+  $("decCost").textContent=`${K(lo)} – ${K(hi)}.`;
+  $("cSeatsBox").style.opacity=CS.plan==="A"?1:.35; $("cSeats").disabled=CS.plan!=="A";
+  $("cBtnT").textContent=cOpen?(tr?"Kapat":"Chiudi"):(tr?"Özelleştir":"Personalizza");
+}
+function segWire(id,key,parse){document.querySelectorAll(`#${id} button`).forEach(b=>b.onclick=()=>{CS[key]=parse(b);document.querySelectorAll(`#${id} button`).forEach(x=>x.setAttribute("aria-pressed",x===b));costCalc();calc();});}
 const FC=["blue","green","orange","indigo","purple","pink","teal","gray"];
 let fOpen=false, aOpen=false;
 function buildFeatures(){
@@ -789,8 +906,8 @@ function buildFeatures(){
   $("fctaT").textContent = fOpen ? (lang==="tr"?"Listeyi kapat":"Chiudi l'elenco") : (lang==="tr"?`${n} özelliğin tamamını keşfet`:`Esplora tutte le ${n} funzionalità`);
 }
 function toggleF(){fOpen=!fOpen;$("fwrap").hidden=!fOpen;$("fcta").setAttribute("aria-expanded",fOpen);buildFeatures();}
-function setActa(){$("actaT").textContent=aOpen?(lang==="tr"?"Varsayımları gizle":"Nascondi ipotesi per attività"):(lang==="tr"?"Faaliyet bazında varsayımları göster":"Mostra ipotesi per attività");}
-function toggleA(){aOpen=!aOpen;$("assump").hidden=!aOpen;$("pane-it").classList.toggle("solo",!aOpen);$("acta").setAttribute("aria-expanded",aOpen);setActa();}
+function setActa(){$("actaT").textContent=aOpen?(lang==="tr"?"Varsayımları kapat":"Chiudi ipotesi"):(lang==="tr"?"Varsayımları düzenle":"Modifica ipotesi");}
+function toggleA(){aOpen=!aOpen;$("assump").hidden=!aOpen;$("acta").setAttribute("aria-expanded",aOpen);setActa();}
 function buildTables(){
   const k=lang==="tr"?0:1;
   $("risks").innerHTML=R.map(r=>`<tr><td>${r[1+k]}</td><td><span class="lvl ${r[0]}">${LV[r[0]][k]}</span><br>${r[3+k].split(": ")[1]||""}</td><td>${r[5+k]}</td></tr>`).join("");
@@ -804,19 +921,29 @@ document.querySelectorAll("#ffilter button").forEach(b=>b.onclick=()=>{
 function setLang(l){
   lang=l; root.dataset.lang=l; root.lang=l;
   document.querySelectorAll(".toggle button").forEach(x=>x.setAttribute("aria-pressed",x.dataset.l===l));
-  try{localStorage.setItem("lp-hs-v4-lang",l)}catch(e){}
+  try{localStorage.setItem("lp-hs-v6-lang",l)}catch(e){}
   build();
 }
 document.querySelectorAll(".toggle button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 window.addEventListener("resize",()=>requestAnimationFrame(draw));
+segWire("cPlan","plan",b=>b.dataset.p); segWire("cOpt","opt",b=>+b.dataset.o);
+$("cSeats").oninput=e=>{CS.seats=+e.target.value;$("cSeatsV").textContent=CS.seats;costCalc();calc();};
+$("cBtn").onclick=()=>{cOpen=!cOpen;$("cfg").hidden=!cOpen;$("cBtn").setAttribute("aria-expanded",cOpen);costCalc();};
 $("fcta").onclick=toggleF; $("acta").onclick=toggleA;
-function setTheme(t){root.dataset.theme=t;try{localStorage.setItem("lp-hs-theme",t)}catch(e){};requestAnimationFrame(draw);}
+function setTheme(t){root.dataset.theme=t;requestAnimationFrame(draw);}
 $("theme").onclick=()=>setTheme(root.dataset.theme==="dark"?"light":"dark");
-{let t=null;try{t=localStorage.getItem("lp-hs-theme")}catch(e){} setTheme(t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"));}
+setTheme("light");
 $("ppc").oninput=e=>{ppc=+e.target.value;$("ppcv").textContent=ppc;calc();};
 if(document.fonts) document.fonts.ready.then(()=>draw());
-let saved=null; try{saved=localStorage.getItem("lp-hs-v4-lang")}catch(e){}
-sel="t1"; setLang(saved==="it"?"it":"tr");
+const hh=v=>{let h=5381;for(const c of v)h=((h*33)^c.charCodeAt(0))>>>0;return h;};
+function unlock(){const g=$("gate");g.classList.add("out");document.body.classList.remove("locked");setTimeout(()=>{g.remove();requestAnimationFrame(draw);},500);}
+let ok=false;try{ok=sessionStorage.getItem("lp-hs-ok")==="1"}catch(e){}
+if(ok){$("gate").remove();document.body.classList.remove("locked");}
+else $("gform").onsubmit=e=>{e.preventDefault();const v=$("gpw").value.trim().toUpperCase();
+  if(hh(v)===2886464479){try{sessionStorage.setItem("lp-hs-ok","1")}catch(e){};unlock();}
+  else{const f=$("gform");f.classList.remove("shake");void f.offsetWidth;f.classList.add("shake");$("gerr").textContent=lang==="tr"?"Hatalı şifre":"Password errata";$("gpw").select();}};
+let saved=null; try{saved=localStorage.getItem("lp-hs-v6-lang")}catch(e){}
+setLang(saved==="it"?"it":"tr");
 </script>
 </body>
 </html>
